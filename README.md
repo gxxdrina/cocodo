@@ -41,15 +41,22 @@
 ## 設計書
 <...>
 
+## 管理者のログイン方法
+email: 'admin@example.com'
+password: 'adminadmin'
+$ rails db:seed
+
 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails, Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 
 ## 使用素材
-- Canvaにてロゴを制作　(https://www.canva.com/)
-- 配色の参考サイト　(https://colorhunt.co/)
+- 配色：Color Hunt　(https://colorhunt.co/)
+- ロゴ：Canva　(https://www.canva.com/)
+- アイコン：Font Awesome　(https://fontawesome.com/)
+- フォント：Google fonts　(https://fonts.google.com/)
