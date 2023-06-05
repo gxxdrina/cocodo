@@ -8,6 +8,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// Bootstrap導入時、下記追加
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"; 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
