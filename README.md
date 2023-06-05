@@ -41,10 +41,11 @@
 ## 設計書
 <...>
 
+
 ## 管理者のログイン方法
-email: 'admin@example.com'
-password: 'adminadmin'
-$ rails db:seed
+email: 'admin@example.com'  
+password: 'adminadmin'  
+$ rails db:seed  
 
 
 ## 開発環境
@@ -60,3 +61,6 @@ $ rails db:seed
 - ロゴ：Canva　(https://www.canva.com/)
 - アイコン：Font Awesome　(https://fontawesome.com/)
 - フォント：Google fonts　(https://fonts.google.com/)
+- Canvaにてロゴを制作　(https://www.canva.com/)
+- 配色の参考サイト　(https://colorhunt.co/)
+
