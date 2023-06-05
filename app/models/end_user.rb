@@ -29,7 +29,7 @@ class EndUser < ApplicationRecord
   end
 
 
-  ## 検索方法分岐
+  ## 会員検索方法の分岐
   # def self.search_for(method, word)
   #   if method == "perfect_match"
   #     @end_user = EndUser.where("name LIKE?", "#{word}")
@@ -44,4 +44,18 @@ class EndUser < ApplicationRecord
   #   end
   # end
 
+  # ## フォローしたときの処理  
+  # def follow(end_user)
+  #   active_relationships.create(followed_id: end_user.id)
+  # end
+
+  # ## フォローを外すときの処理
+  # def unfollow(end_user)
+  #   active_relationships.find_by(followed_id: end_user.id).destroy
+  # end
+
+  # ## フォローしているか判定
+  # def following?(end_user)
+  #   followings.include?(end_user)
+  # end
 end
