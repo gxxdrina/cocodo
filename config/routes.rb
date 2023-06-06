@@ -15,14 +15,15 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'  #ログイン
   }
 
+  root to: 'public/homes#top'
+  get 'about', to: 'public/homes#about', as: 'about'
+
   scope module: :public do
-    root to: 'homes#top'
-    get 'about' => 'homes#about', as: 'about'
 
     ## end_users
     patch 'end_users/:id' => 'end_users#update', as: 'update_end_user'
     patch 'end_users/resign' => 'end_users#resign', as: 'resign_end_user'
-    get 'end_users' => 'end_users#index_favorites', as: 'index_favorites'
+    get 'favorites' => 'end_users#index_favorites', as: 'index_favorites'
     get 'end_users/confirm' => 'end_users#confirm', as: 'confirm_resign'
     resources :end_users, only: [:index, :show, :edit] do
       
