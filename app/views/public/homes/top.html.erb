@@ -1,8 +1,25 @@
 <div class='container'>
   <div class='row'>
-    <h2>Top</h2>
-  </divclass>
-  <div class='row'>
-      
-  </divclass>
+    <div class="col-4">
+      <h2>Top</h2>
+    </div>
+    
+    <div class="col-4">
+      <a class="navbar-brand" href="/about"><%= image_tag 'cocodo_top.png' %></a>
+    </div>
+    
+    <div class="col-4">
+      <div class="content-center">
+        <%= link_to '新規登録', new_end_user_registration_path, class: 'btn btn-outline-secondary btn-sm btn-block mb-3' %>
+        <%= link_to 'ログイン', new_end_user_session_path, class: 'btn btn-outline-secondary btn-sm btn-block mb-3' %>
+        <%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_path, class: 'btn btn-outline-secondary btn-sm btn-block mb-3', method: :post %>
+      </div>
+    </div>
+  </div>
+  
+  <div class='row content-center'>
+    <div class="col">
+      人気上位スポット
+    </div>
+  </div>
 </div>

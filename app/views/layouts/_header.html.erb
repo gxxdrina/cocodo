@@ -1,9 +1,66 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-right" style="background-color: #FFE194;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE194;">
     <div class="container">
-      <a class="navbar-brand" href="/">ココドウ</a>
+      <a class="navbar-brand" href="/"><%= image_tag 'cocodo.png', size: '75x50' %></a>
       
+      <% if end_user_signed_in? %>
+        <a class="navbar-brand text-dark" href="/"><span>ようこそ <%= current_end_user.name %>さん！</span></a>
+      <% elsif admin_signed_in? %>
+        <a class="navbar-brand text-dark" href="/"><span>管理者ログイン中</span></a>
+      <% else %>
+        <a class="navbar-brand text-dark" href="/"><span>ココドウへ、ようこそ！</span></a>
+      <% end %>
       
+        <!--ハンバーガーメニュー-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <!-- 会員ログイン時 -->
+            <% if end_user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "ホーム", end_users_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "人気スポット", index_favorites_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "マイページ", end_user_path(current_end_user), class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
+            <!-- 管理者ログイン時 -->
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "ホーム", admin_top_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "会員一覧", admin_top_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
+            <!-- ログイン前 -->
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "ホーム", root_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "人気スポット", index_favorites_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '新規登録', new_end_user_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_end_user_session_path, class: 'nav-link text-dark' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
       
     </div>
   </nav>

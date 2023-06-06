@@ -27,6 +27,13 @@ class EndUser < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'default-image.jpg'
   end
+  
+  ## ゲストログイン方法
+  def EndUser.guest
+    find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64  #パスワードはランダムな文字列
+    end
+  end
 
 
   ## 会員検索方法の分岐

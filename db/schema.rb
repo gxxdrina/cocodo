@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.text "introduction"
-    t.boolean "user_status", default: false  # 会員ステータス　FALSE：有効、TRUE：退会
+    t.boolean "user_status", default: false  #会員ステータス　FALSE：有効、TRUE：退会
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
@@ -89,16 +89,16 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
   ## 投稿
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
-    t.string "place_name"  # タイトル（投稿写真の場所）
-    t.text "caption"  # 投稿内容
+    t.string "place_name"  #タイトル（投稿写真の場所）
+    t.text "caption"  #投稿内容
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   ## フォロー
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"  # フォローする会員
-    t.integer "followed_id"  # フォローされた会員
+    t.integer "follower_id"  #フォローする会員
+    t.integer "followed_id"  #フォローされた会員
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

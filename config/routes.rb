@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
-    
+  
+  ## ゲスト（閲覧用）
+  devise_scope :end_user do
+    post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in', as: 'guest_sign_in'
+  end
+  
+  
   ## 会員側
   # URL /end_users/sign_in ...
   
   # skip: [:passwords]で、パスワード変更のルーティングを削除
   devise_for :end_users, skip: [:passwords], controllers: {
-    registrations: "public/registrations", #新規登録
-    sessions: 'public/sessions' #ログイン
+    registrations: "public/registrations",  #新規登録
+    sessions: 'public/sessions'  #ログイン
   }
 
   scope module: :public do
     root to: 'homes#top'
-    
     get 'about' => 'homes#about', as: 'about'
-    
+
     ## end_users
     patch 'end_users/:id' => 'end_users#update', as: 'update_end_user'
     patch 'end_users/resign' => 'end_users#resign', as: 'resign_end_user'
-    get 'end_users' => 'end_users#index_favorite', as: 'index_favorites'
+    get 'end_users' => 'end_users#index_favorites', as: 'index_favorites'
     get 'end_users/confirm' => 'end_users#confirm', as: 'confirm_resign'
     resources :end_users, only: [:index, :show, :edit] do
       
@@ -40,7 +45,7 @@ Rails.application.routes.draw do
       # favorites
       post 'favorites' => 'favorites#create', as: 'create_favorite'
       delete 'favorites' => 'favorites#destroy', as: 'destroy_favorite'
-      # resource :favorites, only: [:create, :destroy] # resource(単数)だとURLにidが入らない
+      # resource :favorites, only: [:create, :destroy]  #resource(単数)だとURLにidが入らない
     end
     
     ## searches
@@ -53,7 +58,7 @@ Rails.application.routes.draw do
   
   # skip: ... で不要なルーティングを削除
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions" #ログイン
+    sessions: "admin/sessions"  #ログイン
   }  
 
   namespace :admin do

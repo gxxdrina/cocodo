@@ -1,1 +1,9 @@
 @use '~bootstrap/scss/bootstrap';
+
+
+// サイト全体フォント
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+
+* { 
+  font-family: 'Klee One', cursive;
+}
