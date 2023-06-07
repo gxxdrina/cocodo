@@ -1,5 +1,19 @@
-<div class="class">
-  <div class="class">
-    <h2>投稿の詳細画面</h2>
+<div class="class px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3 m-2">
+      <h3>投稿者の情報</h3>
+      <%= render 'public/end_users/info', end_user: @end_user %>
+    </div>
+    <div class='col-md-8'>
+      <h3>投稿詳細</h3>
+      <% @post.post_images.each do |image| %>
+        <%= image_tag image.variant(resize: '200x200') %>
+      <% end %>
+
+      <%= @post.place_name %>
+      
+      <%= @post.caption %>
+
+    </div>
   </div>
 </div>

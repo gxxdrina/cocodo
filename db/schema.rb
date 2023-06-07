@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  ## 管理者
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  ## 会員
   create_table "end_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
+  ## いいね
   create_table "favorites", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -74,6 +77,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  ## コメント
   create_table "post_comments", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  ## 投稿
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
     t.string "place_name"
@@ -90,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  ## フォロー
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"

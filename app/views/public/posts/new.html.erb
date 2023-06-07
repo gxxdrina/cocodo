@@ -1,5 +1,22 @@
-<div class="class">
-  <div class="class">
-    <h2>新規投稿画面</h2>
+<div class="class px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3 m-2">
+      <h3>自分（マイページ）</h3>
+      <%= render 'public/end_users/info', end_user: @end_user %>
+    </div>
+    <div class='col-md-8 '>
+      <h3>新規投稿</h3>
+      <%= form_with model: @post, url: posts_new_path do |f| %>
+        <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
+        
+        <%= f.label :投稿写真の場所 %>
+        <%= f.text_field :place_name, class: "form-control place_name" %>
+        
+        <%= f.label :投稿内容 %>
+        <%= f.text_area :caption, class: "form-control caption" %>
+        
+        <%= f.submit "新規投稿", class: 'btn btn-secondary mt-3' %>
+      <% end %>
+    </div>
   </div>
 </div>

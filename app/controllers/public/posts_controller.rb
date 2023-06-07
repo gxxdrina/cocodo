@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
   def new
+    @end_user = current_end_user
     @post = Post.new
+    @post.post_images.build
   end
   
   def create
@@ -15,6 +17,7 @@ class Public::PostsController < ApplicationController
   end
   
   def show
+    @end_user = current_end_user
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
   end
