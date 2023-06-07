@@ -1,1 +1,47 @@
-会員
+<table class='table'>
+  <tr>
+  <% if end_user.profile_image %> 
+    <%= image_tag end_user.get_profile_image, class: "rounded-circle mb-2" , size: '100x100' %>
+  <% else %>  <!-- プロフィール画像が設定されていない場合-->
+    <%= image_tag "default-image.jpg", class: "rounded-circle", size: "100x100" %>
+  <% end %>
+  </tr>
+  <tr>
+    <th>ユーザー名</th>
+    <th><%= end_user.name %></th>
+  </tr>
+  <tr>
+	<th>自己紹介</th>
+  	<th><%= end_user.introduction %></th>
+  </tr>
+  <tr>
+    <th>投稿数</th>
+    <th><%= end_user.posts.count %></th>
+  </tr>
+  <tr>
+    <th>フォロー中</th>
+    <th><%= link_to end_user.followings.count, end_user_followings_path(end_user) %></th>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <th><%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
+  </tr>
+</table>
+　
+<div class='table'>
+  <% if current_end_user != end_user %>
+    <td><% if current_user != end_user %>
+      <!--フォローボタン-->
+      <% if current_end_user.following?(end_user) %>
+        <%= link_to "フォロー外す", destroy_relationship_path(user.id), method: :delete, class: "btn btn-outline-info btn-block" %>
+      <% else %>
+        <%= link_to "フォローする", create_relationship_path(user.id), method: :post, class: "btn btn-outline-success btn-block" %>
+      <% end %>
+    <% end %>
+    </td>
+  <% else %>
+    <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block edit_end_user_#{end_user.id}" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% end %>
+</div>

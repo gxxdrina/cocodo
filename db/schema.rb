@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  ## 管理者
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  ## 会員
   create_table "end_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,14 +60,13 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.text "introduction"
-    t.boolean "user_status", default: false  #会員ステータス　FALSE：有効、TRUE：退会
+    t.boolean "user_status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
-  ## いいね
   create_table "favorites", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -77,7 +74,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## コメント
   create_table "post_comments", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -86,19 +82,17 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## 投稿
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
-    t.string "place_name"  #タイトル（投稿写真の場所）
-    t.text "caption"  #投稿内容
+    t.string "place_name"
+    t.text "caption"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## フォロー
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"  #フォローする会員
-    t.integer "followed_id"  #フォローされた会員
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,9 +3,10 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :end_user  # いいねした会員
+  has_many_attached :post_images
 
-  validates :place_name, presence :true, length: { maximum: 20 }
-  validates :caption, presence :true
+  validates :place_name, presence:true, length:{ maximum: 20 }
+  validates :caption, presence:true
 
   ## いいねしているかどうかを判定するメソッド
   def favorited_by?(end_user)
@@ -27,5 +28,4 @@ class Post < ApplicationRecord
 #       @post = Post.all
 #     end
 #   end  
-
 end

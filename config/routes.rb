@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     end
 
     ## posts
+    post 'posts/new' => 'posts#create'
     patch 'posts/:id' => 'posts#update', as: 'update_post'
     delete 'posts/:id' => 'posts#destroy', as: 'destroy_post'
     resources :posts, only: [:new, :show] do
