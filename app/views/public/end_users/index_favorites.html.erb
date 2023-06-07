@@ -1,12 +1,12 @@
 <div class="class px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 m-2">
-      <h3>自分（人気スポット）</h3>
+      <h3>人気スポット</h3>
       <%= render 'info', end_user: @end_user %>
       
     </div>
     <div class='col-md-8'>
       <h3>全会員の投稿いいね多い順一覧画面</h3>
-      <!--%= render 'posts/index', posts: @posts %>-->
+      <%= render 'public/posts/index', posts: @favorite_posts %>
     </div>
   </div>

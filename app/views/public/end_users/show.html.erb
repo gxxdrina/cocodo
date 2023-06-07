@@ -1,12 +1,12 @@
 <div class="class px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 m-2">
-      <h3>自分（マイページ）</h3>
+      <h3>マイページ</h3>
       <%= render 'info', end_user: @end_user %>
     </div>
     <div class='col-md-8'>
-      <h3>current_userの投稿一覧</h3>
-      <!--%= render 'posts/index', posts: @posts %>-->
+      <h3><%= current_end_user.name %> さんの投稿一覧</h3>
+      <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>
 </div>

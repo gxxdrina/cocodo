@@ -29,21 +29,21 @@
 </table>
 　
 <div class='table'>
-  <% if current_end_user != end_user %>
-    <td><% if current_user != end_user %>
+  <!--% if current_end_user != end_user %>-->
+  <!--  <td>% if current_end_user != end_user %>-->
       <!--フォローボタン-->
-      <% if current_end_user.following?(end_user) %>
-        <%= link_to "フォロー外す", destroy_relationship_path(user.id), method: :delete, class: "btn btn-outline-info btn-block" %>
-      <% else %>
-        <%= link_to "フォローする", create_relationship_path(user.id), method: :post, class: "btn btn-outline-success btn-block" %>
-      <% end %>
-    <% end %>
-    </td>
-  <% else %>
-    <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block edit_end_user_#{end_user.id}" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
-  <% end %>
+  <!--    % if current_end_user.following?(end_user) %>-->
+  <!--      %= link_to "フォロー外す", destroy_relationship_path(user.id), method: :delete, class: "btn btn-outline-info btn-block" %>-->
+  <!--    % else %>-->
+  <!--      %= link_to "フォローする", create_relationship_path(user.id), method: :post, class: "btn btn-outline-success btn-block" %>-->
+  <!--    % end %>-->
+  <!--  % end %>-->
+  <!--  </td>-->
+  <!--% else %>-->
+  <!--  %= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block edit_end_user_#{end_user.id}" do %>-->
+  <!--    <i class="fas fa-user-cog"></i>-->
+  <!--  % end %>-->
+  <!--% end %>-->
 </div>
 
 <div>

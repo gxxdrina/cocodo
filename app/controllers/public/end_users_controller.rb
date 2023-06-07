@@ -5,17 +5,12 @@ class Public::EndUsersController < ApplicationController
     @end_user = current_end_user
     @end_users = EndUser.all
     @posts = Post.all
-    
-    # 投稿写真の１枚目のみを取得
-    #@post = @end_user.posts
-   # @post = Post.find(params[:id])
-    #s@post.post_images.attach(params[:post][:post_images].first) if params[:post][:post_images].present?
   end
   
   ## 全会員の投稿をいいねの多い順で表示
   def index_favorites
     @end_user = current_end_user
-    # @favorite_posts = Post.joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
+    @favorite_posts = Post.joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
 
     #いいね多い順 例
     #@books = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
@@ -23,7 +18,7 @@ class Public::EndUsersController < ApplicationController
   
   ## 投稿の詳細を表示
   def show
-    @end_user = current_end_user
+    @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts
   end
   

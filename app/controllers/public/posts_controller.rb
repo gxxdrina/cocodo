@@ -17,8 +17,8 @@ class Public::PostsController < ApplicationController
   end
   
   def show
-    @end_user = current_end_user
     @post = Post.find(params[:id])
+    @end_user = @post.end_user
     @post_comment = PostComment.new
   end
 

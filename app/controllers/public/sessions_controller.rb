@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
   
   # サインイン後は自分の投稿一覧画面へ遷移
   def after_sign_in_path_for(resource)
-    end_user_path
+    end_user_path(current_end_user)
   end
 
   # ログアウト後はトップ画面へ遷移
