@@ -15,6 +15,8 @@
       
       <p><%= @post.caption %></p>
       
+      <%= render 'favorite-btn', post: @post %>
+      
       <% if @end_user == current_end_user %>
         <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>
         <%= link_to "削除", @post, method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>

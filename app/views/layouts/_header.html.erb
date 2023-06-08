@@ -27,6 +27,9 @@
                 <%= link_to "人気スポット", index_favorites_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
+              <%= link_to "お気に入り", post_favorites_path(current_end_user.favorites), class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "マイページ", end_user_path(current_end_user), class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">

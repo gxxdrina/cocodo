@@ -13,6 +13,8 @@ class Public::EndUsersController < ApplicationController
                      .group(:id)
                       # いいねの数で降順を指定
                      .order('COUNT(favorites.id) DESC')
+                     
+    
   end
   
   ## １投稿者の投稿一覧
