@@ -14,7 +14,11 @@
       <p><%= @post.place_name %></p> 
       
       <p><%= @post.caption %></p>
-
+      
+      <% if @end_user == current_end_user %>
+        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>
+        <%= link_to "削除", @post, method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,22 +1,21 @@
 class Public::EndUsersController < ApplicationController
   
-  ## 全会員の投稿を新着順で表示
+  ## 全会員の投稿一覧：新着順で表示
   def index
-    @end_user = current_end_user
-    @end_users = EndUser.all
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
   end
   
-  ## 全会員の投稿をいいねの多い順で表示
+  ## 全会員の投稿一覧：いいねの多い順で表示（いいねゼロも含む）
   def index_favorites
-    @end_user = current_end_user
-    @favorite_posts = Post.joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
-
-    #いいね多い順 例
-    #@books = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+                      # favoritesテーブルと結合するPostモデルを取得
+    @favorite_posts = Post.left_outer_joins(:favorites)
+                      # Postレコードをidでグループ化
+                     .group(:id)
+                      # いいねの数で降順を指定
+                     .order('COUNT(favorites.id) DESC')
   end
   
-  ## 投稿の詳細を表示
+  ## １投稿者の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts

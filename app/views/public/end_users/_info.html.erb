@@ -16,7 +16,7 @@
   </tr>
   <tr>
     <th>投稿数</th>
-    <th><%= end_user.posts.count %></th>
+    <th><%= link_to end_user.posts.count, end_user_path(end_user) %></th>
   </tr>
   <tr>
     <th>フォロー中</th>
@@ -43,7 +43,7 @@
     <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block edit_end_user_#{end_user.id}" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
-  <% end %>
+  <!--% end %>-->
 </div>
 
 <div>

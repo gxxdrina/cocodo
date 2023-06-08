@@ -5,7 +5,7 @@
       <%= render 'info', end_user: @end_user %>
     </div>
     <div class='col-md-8'>
-      <h3><%= current_end_user.name %> さんの投稿一覧</h3>
+      <h3><%= @end_user.name %> さんの投稿一覧</h3>
       <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>

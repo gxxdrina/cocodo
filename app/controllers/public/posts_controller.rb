@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
     end
   end
   
+  ## 投稿の詳細画面
   def show
     @post = Post.find(params[:id])
     @end_user = @post.end_user
@@ -24,9 +25,9 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    if @post.end_user != current_end_user 
-      redirect_to post_path(@post)
-    end
+    # if @post.end_user != current_end_user 
+    #   redirect_to post_path(@post)
+    # end
   end
   
   def update
