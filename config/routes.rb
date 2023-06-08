@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     post 'posts/new' => 'posts#create'
     patch 'posts/:id' => 'posts#update', as: 'update_post'
     delete 'posts/:id' => 'posts#destroy', as: 'destroy_post'
-    resources :posts, only: [:new, :show] do
+    resources :posts, only: [:new, :show, :edit] do
       
       # post_comments
       post 'comments/new' => 'post_comments#create', as: 'create_comment'
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       # favorites
       post 'favorites' => 'favorites#create', as: 'create_favorite'
       delete 'favorites' => 'favorites#destroy', as: 'destroy_favorite'
-      # resource :favorites, only: [:create, :destroy]  #resource(単数)だとURLにidが入らない
+      resources :favorites, only: [:index]  #resource(単数)だとURLにidが入らない
     end
     
     ## searches

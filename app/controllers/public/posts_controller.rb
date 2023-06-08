@@ -22,6 +22,13 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    if @post.end_user != current_end_user 
+      redirect_to post_path(@post)
+    end
+  end
+  
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)

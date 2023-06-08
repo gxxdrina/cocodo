@@ -4,4 +4,7 @@ class Public::FavoritesController < ApplicationController
   
   def destroy
   end
+  
+  def index
+  end
 end
