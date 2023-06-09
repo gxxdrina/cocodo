@@ -3,6 +3,10 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     favorite = current_end_user.favorites.new(post_id: @post.id)
     favorite.save
+    respond_to do |format|
+      format.js
+    end
+    # redirect_to request.referer
   end
   
   def destroy
