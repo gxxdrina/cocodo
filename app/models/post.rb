@@ -11,6 +11,7 @@ class Post < ApplicationRecord
 
   ## いいねしているかどうかを判定するメソッド
   def favorited_by?(end_user)
+    #引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか
     favorites.exists?(end_user_id: end_user.id)
   end
 

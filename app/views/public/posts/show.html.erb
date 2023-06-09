@@ -15,7 +15,8 @@
       
       <p><%= @post.caption %></p>
       
-      <%= render 'favorite-btn', post: @post %>
+      
+      <%= render 'public/favorites/favorite-btn', post: @post %>
       
       <% if @end_user == current_end_user %>
         <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>

@@ -1,4 +1,4 @@
-<div class="class px-5 px-sm-0">
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 m-2">
       <h3>ホーム</h3>
@@ -7,18 +7,21 @@
     
     <div class='col-md-8'>
       <h3>自分がいいねした投稿一覧</h3>
-      <% @favorites_posts.each do |favorite| %>
-      <div class="d-flex flex-wrap m-2">
-        <%= link_to root_path do %>
-          <!--投稿写真の１枚目のみを表示-->
-          <%= image_tag favorite.post.post_images[0].variant(resize: '250x250') %><br>
-          
-          <%= truncate(favorite.post.place_name, length: 15, omission: '...') %>
-          
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"><%= favorite.post.favorites.count %></i>
+      <div class="row">
+        <% @favorites_posts.each do |favorite| %>
+          <div class="d-flex flex-wrap m-2">
+            <%= link_to root_path do %>
+              <!--投稿写真の１枚目のみを表示-->
+              <%= image_tag favorite.post.post_images[0].variant(resize: '250x250') %><br>
+              
+              <%= truncate(favorite.post.place_name, length: 15, omission: '...') %>
+              
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= favorite.post.favorites.count %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>

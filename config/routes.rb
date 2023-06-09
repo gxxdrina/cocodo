@@ -21,33 +21,28 @@ Rails.application.routes.draw do
   scope module: :public do
 
     ## end_users
-    patch 'end_users/:id' => 'end_users#update', as: 'update_end_user'
+    #patch 'end_users/:id' => 'end_users#update', as: 'update_end_user'
     patch 'end_users/resign' => 'end_users#resign', as: 'resign_end_user'
     get 'favorites' => 'end_users#index_favorites', as: 'index_favorites'
     get 'end_users/confirm' => 'end_users#confirm', as: 'confirm_resign'
-    resources :end_users, only: [:index, :show, :edit] do
+    resources :end_users, only: [:index, :show, :edit, :update] do
       
-      # relationships
-      post 'relationships' => 'relationships#create', as: 'create_relationship'
-      delete 'relationships' => 'relationships#destroy', as: 'destroy_relationship'
+      ## relationships
+      resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
     ## posts
-    post 'posts/new' => 'posts#create'
-    patch 'posts/:id' => 'posts#update', as: 'update_post'
-    delete 'posts/:id' => 'posts#destroy', as: 'destroy_post'
-    resources :posts, only: [:new, :show, :edit] do
+    resources :posts, only: [:new, :create, :destroy, :show, :edit, :update] do
       
-      # post_comments
-      post 'comments/new' => 'post_comments#create', as: 'create_comment'
-      delete 'comments/:id' => 'post_comments#destroy', as: 'destroy_comment'
+      ## post_comments
+      resources :post_comments, only: [:create, :destroy]
       
-      # favorites
-      post 'favorites' => 'favorites#create', as: 'create_favorite'
-      delete 'favorites' => 'favorites#destroy', as: 'destroy_favorite'
-      resources :favorites, only: [:index]  #resource(単数)だとURLにidが入らない
+      ## favorites
+      get 'favorites' => 'favorites#index'
+      resource :favorites, only: [:create, :destroy]
+      # resource(単数)だとURLにidが入らない＝1つの投稿に対して1回しかいいねできない
     end
     
     ## searches
@@ -67,11 +62,9 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top', as: 'top'
     
     ## end_users
-    patch 'end_users/:id' => 'end_users#update'
-    resources :end_users, only: [:show]
+    resources :end_users, only: [:show, :update]
     
     ## posts
-    delete 'posts/:id' => 'posts#destroy', as: 'destroy_post'
-    resources :posts, only: [:show]
+    resources :posts, only: [:show, :destroy]
   end
 end 

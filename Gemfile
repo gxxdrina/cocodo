@@ -55,4 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Add devise, pry-rails
 gem 'devise'
+
+gem 'pry-rails'
+  # デバッグをしたい箇所をブレークポイントとして、binding.pryを記述する
+  # Viewファイルでは<% binding.pry %>

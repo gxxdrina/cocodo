@@ -8,7 +8,7 @@
           
           <%= truncate(posts.place_name, length: 15, omission: '...') %>
           
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"><%= posts.favorites.count %></i>
+          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= posts.favorites.count %>
         <% end %>
       </div>
     <% end %>
