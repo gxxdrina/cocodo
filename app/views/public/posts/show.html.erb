@@ -1,29 +1,45 @@
-<div class="class px-5 px-sm-0">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 m-2">
-      <h3>投稿者の情報</h3>
+    <div class="col-md-3">
+      <h3>投稿者</h3>
       <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
-    <div class='col-md-8'>
-      <h3>投稿詳細</h3>
-      <% @post.post_images.each do |image| %>
-        <%= image_tag image.variant(resize: '200x200') %>
-      <% end %><br>
-      
-      投稿日：<%= @post.created_at.strftime("%Y/%m/%d") %>
-      <p><%= @post.place_name %></p> 
-      
-      <p><%= @post.caption %></p>
-      
-      <div class="favorite-btn">
-        <%= render 'public/favorites/favorite-btn', post: @post %>
-      </div>
     
-      
-      <% if @end_user == current_end_user %>
-        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>
-        <%= link_to "削除", @post, method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
+    <div class="col-md-6">
+      <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
+        <% @post.post_images.each do |image| %>
+          <%= image_tag image.variant(resize: '200x200'), class: "rounded m-2" %>
+        <% end %><br>
+        <!-- いいねボタン -->
+        <div class="favorite-btn d-flex justify-content-end">
+          <%= render 'public/favorites/favorite-btn', post: @post %>
+        </div>
+        
+        投稿日：<%= @post.created_at.strftime("%Y/%m/%d") %>
+        <p>場所：<%= @post.place_name %></p> 
+
+        <p><%= @post.caption %></p>
+        
+        <!-- 自分の投稿の場合はボタンを表示 -->
+        <% if @end_user == current_end_user %>
+          <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>
+          <%= link_to "削除", @post, method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="col-md-3 shadow-sm p-3 bg-white rounded border border-2">
+      <!-- コメント一覧 -->
+      <div class="post_comments">
+        <%= render "public/post_comments/index", post: @post, end_user: @end_user %>
+      </div>
+
+      <!-- コメント投稿 -->
+      <%= form_with model: [@post, @post_comment], local: false do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
+        <%= f.submit "送信する" %>
       <% end %>
+      
     </div>
   </div>
 </div>

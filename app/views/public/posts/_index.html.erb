@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <% posts.each do |posts| %>
-      <div class="d-flex flex-wrap m-2">
+      <div class="shadow-sm p-3 m-2 bg-white rounded border border-2 d-flex flex-wrap">
         <%= link_to post_path(posts) do %>
           <!--投稿写真の１枚目のみを表示-->
           <%= image_tag posts.post_images[0].variant(resize: '250x250') %><br>

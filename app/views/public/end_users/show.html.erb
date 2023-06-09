@@ -1,10 +1,9 @@
-<div class="class px-5 px-sm-0">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 m-2">
-      <h3>マイページ</h3>
+    <div class="col-md-3">
       <%= render 'info', end_user: @end_user %>
     </div>
-    <div class='col-md-8'>
+    <div class='col-md-9'>
       <h3><%= @end_user.name %> さんの投稿一覧</h3>
       <%= render 'public/posts/index', posts: @posts %>
     </div>

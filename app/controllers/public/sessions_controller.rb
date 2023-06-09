@@ -26,12 +26,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
-  # サインイン後は自分の投稿一覧画面へ遷移
+  # ログイン後は自分の投稿一覧画面へ遷移
   def after_sign_in_path_for(resource)
     end_user_path(current_end_user)
   end
 
-  # ログアウト後はトップ画面へ遷移
+  # 退会後はトップ画面へ遷移
   def after_sign_out_path_for(resource)
     root_path
   end
@@ -42,8 +42,8 @@ class Public::SessionsController < Devise::SessionsController
     # find_by メソッド：モデルから入力された email を検索し、該当する 1 件を取得する用途で使用
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     # アカウントを取得できなかった場合は、このメソッドを終了する
-  　return if !@end_user
-  　
+    return if !@end_user
+  
     # valid_password?メソッド：find_by メソッドで特定したアカウントのパスワードと、ログイン画面で入力されたパスワードが一致しているかを判断
     if @end_user.valid_password?(params[:end_user][:password]) && !@end_user.user_status
                                                              # && (@end_user.user_status == true) を簡略化

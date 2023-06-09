@@ -50,13 +50,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
+  # 新規登録後は投稿新着一覧画面（ホーム）へ遷移
   def after_sign_up_path_for(resource)
-    about_path
+    end_users_path
   end
   
+  # ログイン後は自分の投稿一覧画面へ遷移
   def after_sign_in_path_for(resource)
-   about_path
+    end_user_path(current_end_user)
   end
 
   # The path used after sign up for inactive accounts.

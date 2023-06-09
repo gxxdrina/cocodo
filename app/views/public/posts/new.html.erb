@@ -1,12 +1,11 @@
-<div class="class px-5 px-sm-0">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 m-2">
-      <h3>自分</h3>
+    <div class="col-md-3">
       <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
-    <div class='col-md-8 '>
+    <div class='col-md-7'>
       <h3>新規投稿</h3>
-      <%= form_with model: @post, url: posts_new_path do |f| %>
+      <%= form_with model: @post, url: posts_path do |f| %>
         <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
         
         <%= f.label :投稿写真の場所 %>
