@@ -27,25 +27,27 @@
     <th><%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
   </tr>
 </table>
-　
+
 <div class='table'>
-  <!--% if current_end_user != end_user %>-->
-  <!--  <td>% if current_end_user != end_user %>-->
-      <!--フォローボタン-->
-  <!--    % if current_end_user.following?(end_user) %>-->
-  <!--      %= link_to "フォロー外す", destroy_relationship_path(user.id), method: :delete, class: "btn btn-outline-info btn-block" %>-->
-  <!--    % else %>-->
-  <!--      %= link_to "フォローする", create_relationship_path(user.id), method: :post, class: "btn btn-outline-success btn-block" %>-->
-  <!--    % end %>-->
-  <!--  % end %>-->
-  <!--  </td>-->
-  <!--% else %>-->
+  <% if current_end_user != end_user %>
+    <td>
+    <% if current_end_user != end_user %>
+    <!-- 自分以外のページの場合は、フォローボタンを表示 -->
+      <% if current_end_user.following?(end_user) %>
+        <%= link_to "フォローをやめる", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info btn-block" %>
+      <% else %>
+        <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success btn-block" %>
+      <% end %>
+    <% end %>
+    </td>
+  <% else %> 
+  <!-- 自分のページの場合は、会員情報編集ボタンを表示 -->
     <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block edit_end_user_#{end_user.id}" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
-  <!--% end %>-->
+  <% end %>
 </div>
 
 <div>
-  <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-success btn-block" %>
+  <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-success btn-block mb-3" %>
 </div>

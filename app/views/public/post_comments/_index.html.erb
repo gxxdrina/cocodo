@@ -7,7 +7,7 @@
         <% if post_comment.end_user.profile_image %> 
           <%= image_tag post_comment.end_user.get_profile_image, class: "rounded-circle my-2" , size: '50x50' %>
         <% else %>  <!-- プロフィール画像が設定されていない場合-->
-          <%= image_tag "default-image.jpg", class: "rounded-circle", size: "100x100" %>
+          <%= image_tag "default-image.jpg", class: "rounded-circle", size: "50x50" %>
         <% end %>
         
         <!--%= post_comment.end_user.name %>-->

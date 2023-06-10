@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
         <% @post.post_images.each do |image| %>
-          <%= image_tag image.variant(resize: '200x200'), class: "rounded m-2" %>
+          <%= image_tag image.variant(resize: '200x200'), class: "rounded" %>
         <% end %><br>
         <!-- いいねボタン -->
         <div class="favorite-btn d-flex justify-content-end">
