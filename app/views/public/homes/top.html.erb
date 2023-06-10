@@ -26,10 +26,24 @@
     </div>
   </div>
   
-  <div class='row align-items-center justify-content-center text-center flex-wrap'>
+  <div class='row text-center mt-3'>
     <div class="col">
-      <p>最近の人気スポット</p>
-      
+      <h5>最近の人気スポット</h5>
+
+      <!--%= render 'public/posts/index', posts: @posts %>-->
+
+      <div class="d-flex flex-wrap">
+        <% @posts.each do |posts| %>
+          <div class="m-3">
+          <%= link_to post_path(posts) do %>
+            <%= image_tag posts.post_images[0].variant(resize: '250x250'), class: "rounded" %><br>
+            <%= posts.place_name %>
+            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= posts.favorites.count %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
