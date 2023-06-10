@@ -1,7 +1,7 @@
 <table>
   <tbody>
   <% post.post_comments.each do |post_comment| %>
-  <tr class="border-bottom">
+  <tr class="border-top">
     <td>
       <%= link_to end_user_path(post_comment.end_user) do %>
         <% if post_comment.end_user.profile_image %> 

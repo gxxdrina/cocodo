@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
         <% @post.post_images.each do |image| %>
-          <%= image_tag image.variant(resize: '200x200'), class: "rounded" %>
+          <%= image_tag image.variant(resize: '200x200'), class: "rounded mt-2" %>
         <% end %><br>
         <!-- いいねボタン -->
         <div class="favorite-btn d-flex justify-content-end">
@@ -35,10 +35,12 @@
       </div>
 
       <!-- コメント投稿 -->
+      <div class="mt-2">
       <%= form_with model: [@post, @post_comment], local: false do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
-        <%= f.submit "送信する" %>
+        <%= f.submit "送信", class: "float-right" %>
       <% end %>
+      </div>
       
     </div>
   </div>

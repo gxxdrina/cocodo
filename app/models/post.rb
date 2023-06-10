@@ -16,18 +16,18 @@ class Post < ApplicationRecord
   end
 
 
-#   ## 投稿検索方法の分岐
-#   def self.search_for(method, word)
-#     if method == "perfect_match"
-#       @post = Post.where("place_name LIKE?","#{word}")
-#     elsif method == "forward_match"
-#       @post = Post.where("place_name LIKE?","#{word}%")
-#     elsif method == "backward_match"
-#       @post = Post.where("place_name LIKE?","%#{word}")
-#     elsif method == "partial_match"
-#       @post = Post.where("place_name LIKE?","%#{word}%")
-#     else
-#       @post = Post.all
-#     end
-#   end  
+  # ## 投稿検索方法の分岐
+  # def self.search_for(method, word)
+  #   if method == "perfect_match"
+  #     @post = Post.where("place_name LIKE?","#{word}")
+  #   elsif method == "forward_match"
+  #     @post = Post.where("place_name LIKE?","#{word}%")
+  #   elsif method == "backward_match"
+  #     @post = Post.where("place_name LIKE?","%#{word}")
+  #   elsif method == "partial_match"
+  #     @post = Post.where("place_name LIKE?","%#{word}%")
+  #   else
+  #     @post = Post.all
+  #   end
+  # end  
 end

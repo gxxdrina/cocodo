@@ -29,14 +29,14 @@ class EndUser < ApplicationRecord
   end
   
   ## ゲストログイン方法
-  def EndUser.guest
+  def self.guest
     find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |end_user|
       end_user.password = SecureRandom.urlsafe_base64  #パスワードはランダムな文字列
     end
   end
 
 
-  ## 会員検索方法の分岐
+  # ## 会員検索方法の分岐
   # def self.search_for(method, word)
   #   if method == "perfect_match"
   #     @end_user = EndUser.where("name LIKE?", "#{word}")

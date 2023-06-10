@@ -1,5 +1,6 @@
 class Public::EndUsersController < ApplicationController
-  
+  before_action :authenticate_end_user!
+
   ## 全会員の投稿一覧：新着順で表示
   def index
     @posts = Post.order(created_at: :desc)

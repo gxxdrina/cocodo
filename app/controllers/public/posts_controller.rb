@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_end_user!
+  
   def new
     @end_user = current_end_user
     @post = Post.new

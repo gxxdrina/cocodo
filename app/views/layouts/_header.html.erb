@@ -1,16 +1,19 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE194;">
     <div class="container">
-      <a class="navbar-brand" href="/"><%= image_tag 'cocodo.png', size: '75x50' %></a>
-      
-      <% if end_user_signed_in? %>
-        <a class="navbar-brand text-dark" href="/"><span>ようこそ <%= current_end_user.name %>さん！</span></a>
-      <% elsif admin_signed_in? %>
-        <a class="navbar-brand text-dark" href="/"><span>管理者ログイン中</span></a>
-      <% else %>
-        <a class="navbar-brand text-dark" href="/"><span>ココドウへ、ようこそ！</span></a>
-      <% end %>
-      
+      <div class="row">
+        <a class="navbar-brand" href="/"><%= image_tag 'cocodo.png', size: '75x50' %></a>
+
+        <% if end_user_signed_in? %>
+          <a class="navbar-brand text-dark mt-2" href="/"><span>ようこそ <%= current_end_user.name %>さん！</span></a>
+        <% elsif admin_signed_in? %>
+          <a class="navbar-brand text-dark mt-2" href="/"><span>管理者ログイン中</span></a>
+        <% else %>
+          <a class="navbar-brand text-dark mt-2" href="/"><span>ココドウへ、ようこそ！</span></a>
+        <% end %>
+      </div>
+        
+      <div class="row">
         <!--ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -66,7 +69,25 @@
             <% end %>
           </ul>
         </div>
+      </div>
 
+        <!--%= form_tag(search_user_items_path, method: :get, style: 'display: inline;')  do %>-->
+        <!--  %= text_field_tag :word, "",  id: "item_search", name: "keyword", placeholder: '検索ワードを入力', class: 'form-control', value: @keyword %>-->
+        <!--  %= submit_tag "検索", class: 'btn btn-outline-warning mt-3 mr-3'%>-->
+        <!--% end %>-->
+        
+      <!--<div class="row">-->
+      <!--  % if end_user_signed_in? %>-->
+      <!--    <div class="search_form ml-auto">-->
+      <!--      %= form_with url: search_path, method: :get, local: true do |f| %>-->
+      <!--        %= f.text_field :word %><br>-->
+      <!--        %= f.select :range, options_for_select([['ユーザー'], ['投稿']]) %>-->
+      <!--        %= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>-->
+      <!--        %= f.submit "検索", class: "btn btn-secondary btn-sm" %>-->
+      <!--      % end %>-->
+      <!--    </div>-->
+      <!--  % end %>-->
+      <!--</div>-->
       
     </div>
   </nav>

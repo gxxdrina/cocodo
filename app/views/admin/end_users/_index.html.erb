@@ -1,0 +1,16 @@
+<table class='table'>
+  <tbody>
+    <% end_users.each do |end_user| %>
+      <tr>
+        <td>
+          <% if end_user.profile_image %> 
+            <%= image_tag end_user.get_profile_image, class: "rounded-circle my-2" , size: '50x50' %>
+          <% else %>
+            <%= image_tag "default-image.jpg", class: "rounded-circle", size: "50x50" %>
+          <% end %>
+        <td><%= end_user.name %></td>
+        <td><%= link_to '投稿を見る', end_user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
