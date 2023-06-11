@@ -2,11 +2,11 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_end_user!
 
   def search
-    @range = params[:range]
-    if @range == "EndUser"
-      @end_users = EndUser.looks(params[:search], params[:word])
-    else
-      @posts = Post.looks(params[:search], params[:word])
+    @posts = Post.search(params[:keyword])
+    @end_users = EndUser.search(params[:keyword])
+    
+    if @posts.empty? && @end_users.empty?
+      flash.now[:notice] = "キーワードに関連する 投稿・ユーザーが見つかりません。"
     end
   end
 end

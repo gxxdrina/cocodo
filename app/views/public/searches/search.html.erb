@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/end_users/info', end_user: current_end_user %>
+    </div>
+    <div class='col-md-9'>
+      <h3>検索結果</h3>
+      <%= render 'public/posts/index', posts: @posts %>
+      <%= render 'public/end_users/index', end_users: @end_users %>
+    </div>
+  </div>
+</div>

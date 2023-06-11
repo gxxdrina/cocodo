@@ -15,19 +15,12 @@ class Post < ApplicationRecord
     favorites.exists?(end_user_id: end_user.id)
   end
 
-
-  # ## 投稿検索方法の分岐
-  # def self.search_for(method, word)
-  #   if method == "perfect_match"
-  #     @post = Post.where("place_name LIKE?","#{word}")
-  #   elsif method == "forward_match"
-  #     @post = Post.where("place_name LIKE?","#{word}%")
-  #   elsif method == "backward_match"
-  #     @post = Post.where("place_name LIKE?","%#{word}")
-  #   elsif method == "partial_match"
-  #     @post = Post.where("place_name LIKE?","%#{word}%")
-  #   else
-  #     @post = Post.all
-  #   end
-  # end  
+  ## 会員のキーワード検索
+  def self.search(keyword)
+    if keyword.present?
+      where(['place_name LIKE ?', "%#{keyword}%"])
+    else
+      none  #キーワードがない場合はフラッシュメッセージを表示して結果を返さない
+    end
+  end
 end

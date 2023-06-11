@@ -13,14 +13,24 @@
         <% end %>
       </div>
         
-      <div class="row">
+      <div class="row ml-auto">
+        <!-- 検索フォーム -->
+        <div class="mr-2 mt-1">
+          <% if end_user_signed_in? %>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
+              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
+            <% end %>
+          <% end %>
+        </div>
+
         <!--ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
             <!-- 会員ログイン時 -->
             <% if end_user_signed_in? %>
               <li class="nav-item">
@@ -71,24 +81,6 @@
         </div>
       </div>
 
-        <!--%= form_tag(search_user_items_path, method: :get, style: 'display: inline;')  do %>-->
-        <!--  %= text_field_tag :word, "",  id: "item_search", name: "keyword", placeholder: '検索ワードを入力', class: 'form-control', value: @keyword %>-->
-        <!--  %= submit_tag "検索", class: 'btn btn-outline-warning mt-3 mr-3'%>-->
-        <!--% end %>-->
-        
-      <!--<div class="row">-->
-      <!--  % if end_user_signed_in? %>-->
-      <!--    <div class="search_form ml-auto">-->
-      <!--      %= form_with url: search_path, method: :get, local: true do |f| %>-->
-      <!--        %= f.text_field :word %><br>-->
-      <!--        %= f.select :range, options_for_select([['ユーザー'], ['投稿']]) %>-->
-      <!--        %= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>-->
-      <!--        %= f.submit "検索", class: "btn btn-secondary btn-sm" %>-->
-      <!--      % end %>-->
-      <!--    </div>-->
-      <!--  % end %>-->
-      <!--</div>-->
-      
     </div>
   </nav>
 </header>

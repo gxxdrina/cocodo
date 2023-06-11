@@ -35,21 +35,14 @@ class EndUser < ApplicationRecord
     end
   end
 
-
-  # ## 会員検索方法の分岐
-  # def self.search_for(method, word)
-  #   if method == "perfect_match"
-  #     @end_user = EndUser.where("name LIKE?", "#{word}")
-  #   elsif method == "forward_match"
-  #     @end_user = EndUser.where("name LIKE?","#{word}%")
-  #   elsif method == "backward_match"
-  #     @end_user = EndUser.where("name LIKE?","%#{word}")
-  #   elsif method == "partial_match"
-  #     @end_user = EndUser.where("name LIKE?","%#{word}%")
-  #   else
-  #     @end_user = EndUser.all
-  #   end
-  # end
+  ## 投稿のキーワード検索
+  def self.search(keyword)
+    if keyword.present?
+      where(['name LIKE ?', "%#{keyword}%"])
+    else
+      none
+    end
+  end
 
   ## フォローしたときの処理  
   def follow(end_user)
