@@ -57,7 +57,6 @@ $ rails db:seed
 
 
 ## 使用素材
-- 配色：Color Hunt　(https://colorhunt.co/)
 - ロゴ：Canva　(https://www.canva.com/)
 - アイコン：Font Awesome　(https://fontawesome.com/)
 - フォント：Google fonts　(https://fonts.google.com/)
