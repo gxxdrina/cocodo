@@ -61,9 +61,9 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top', as: 'top'
     
     ## end_users
-    resources :end_users, only: [:show, :update]
+    resources :end_users, only: [:index, :show, :update]
     
     ## posts
-    resources :posts, only: [:show, :destroy]
+    resources :posts, only: [:show, :destroy] 
   end
 end 

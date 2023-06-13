@@ -1,0 +1,17 @@
+<table class='table'>
+  <tr>
+    <td>全会員数　<%= link_to end_users.count, admin_end_users_path %>人</td>
+  </tr>
+  <tr>
+    <td>
+      利用中　<%= end_users.where(user_status: false).count %>人 ／ 
+      退会済　<%= end_users.where(user_status: true).count %>人
+    </td>
+  </tr>
+  <tr>
+    <td>全投稿数　<%= link_to posts.count, admin_top_path %>件</td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+</table>
