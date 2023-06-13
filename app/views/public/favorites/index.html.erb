@@ -7,9 +7,9 @@
     <div class='col-md-9'>
       <h3>自分がいいねした投稿一覧</h3>
       <div class="row">
-        <% @favorites_posts.each do |favorite| %>
+        <% @favorite_posts.each do |favorite| %>
           <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap">
-            <%= link_to root_path do %>
+            <%= link_to post_path(favorite.post) do %>
               <!--投稿写真の１枚目のみを表示-->
               <%= image_tag favorite.post.post_images[0].variant(resize: '230x230') %><br>
               

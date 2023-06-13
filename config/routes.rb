@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   scope module: :public do
 
     ## end_users
-    #patch 'end_users/:id' => 'end_users#update', as: 'update_end_user'
     patch 'end_users/resign' => 'end_users#resign', as: 'resign_end_user'
     get 'favorites' => 'end_users#index_favorites', as: 'index_favorites'
     get 'end_users/confirm' => 'end_users#confirm', as: 'confirm_resign'
@@ -40,8 +39,8 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       
       ## favorites
-      get 'favorites' => 'favorites#index'
       resource :favorites, only: [:create, :destroy]
+      get 'favorites' => 'favorites#index', as: 'index_my_favorite'
       # resource(単数)だとURLにidが入らない＝1つの投稿に対して1回しかいいねできない
     end
     
