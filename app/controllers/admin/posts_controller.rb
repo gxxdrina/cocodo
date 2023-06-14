@@ -7,11 +7,10 @@ class Admin::PostsController < ApplicationController
     
     @post = Post.find(params[:id])
     @end_user = @post.end_user
-
   end
   
   def destroy
     @post = Post.find(params[:id]).destroy
-    redirect_to admin_end_user_path
+    redirect_to admin_top_path
   end
 end
