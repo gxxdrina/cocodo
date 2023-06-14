@@ -65,5 +65,8 @@ Rails.application.routes.draw do
     
     ## posts
     resources :posts, only: [:show, :destroy] 
+    
+    ## searches
+    get "search" => "searches#search"
   end
 end 

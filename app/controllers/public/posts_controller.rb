@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  # before_action :authenticate_end_user!
+  before_action :authenticate_end_user!
   
   def new
     @end_user = current_end_user
@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
-      redirect_to post_path(@post), notice: "投稿しました。"
+      redirect_to post_path(@post), notice: "投稿しました！！"
     else
        @end_user = current_end_user
       render 'new'
@@ -27,24 +27,25 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    # if @post.end_user != current_end_user 
-    #   redirect_to post_path(@post)
-    # end
+    if @post.end_user != current_end_user 
+      redirect_to post_path(@post)
+    end
   end
   
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "投稿を更新しました。"
+      redirect_to post_path(@post), notice: "投稿を更新しました！"
     else
-      flash[:notice] = "入力に誤りがあります。"
+      flash[:notice] = "入力に誤りがあります！"
       render 'edit'
     end
   end
   
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to posts_path
+    flash[:notice] = "投稿を削除しました！"
+    redirect_to end_user_path(current_end_user)
   end
   
   private

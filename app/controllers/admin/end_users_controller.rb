@@ -1,5 +1,5 @@
 class Admin::EndUsersController < ApplicationController
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
   
   def index
     @end_users = EndUser.all
@@ -14,7 +14,7 @@ class Admin::EndUsersController < ApplicationController
   def update
     end_user = EndUser.find(params[:id])
     end_user.update(end_user_params)
-    redirect_to admin_end_users_path, notice: "会員ステータスを変更しました"
+    redirect_to admin_end_users_path, notice: "会員ステータスを変更しました！"
   end
   
   private

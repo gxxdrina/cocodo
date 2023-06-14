@@ -1,14 +1,14 @@
 ja:
   activerecord:
     attributes:
-      end_user:
-        name: ユーザー名
-        introduction: 自己紹介
-      
       post:
         place_name: タイトル
         caption: 投稿内容
         post_images: 投稿写真
+
+      end_user:
+        name: ユーザー名
+        introduction: 自己紹介
 
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン

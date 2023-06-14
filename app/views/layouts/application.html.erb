@@ -16,8 +16,10 @@
     <%= render 'layouts/header' %>
 
     <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="text-center mt-1">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
       
       <%= yield %>
     </main>

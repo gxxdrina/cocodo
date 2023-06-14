@@ -14,10 +14,15 @@
       </div>
         
       <div class="row ml-auto">
-        <!-- 検索フォーム -->
+        <!-- 検索フォーム（ログイン中のみ表示）-->
         <div class="mr-2 mt-1">
           <% if end_user_signed_in? %>
             <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
+              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
+            <% end %>
+          <% elsif admin_signed_in? %>
+            <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
               <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
               <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
             <% end %>

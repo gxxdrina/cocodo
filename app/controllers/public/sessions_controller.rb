@@ -40,7 +40,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     end_user = EndUser.guest
     sign_in end_user 
-    redirect_to end_users_path, notice: 'ゲストユーザーでログインしました。'
+    redirect_to end_users_path, notice: 'ゲストユーザーでログインしました！'
   end
   
   ## 退会しているかを判断するメソッド

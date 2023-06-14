@@ -31,7 +31,6 @@ class Public::EndUsersController < ApplicationController
     if @end_user.update(end_user_params)
       redirect_to end_user_path(current_end_user), notice: "ユーザー情報を更新しました！"
     else
-      flash[:notice] = "入力に誤りがあります！"
       render :edit
     end
   end

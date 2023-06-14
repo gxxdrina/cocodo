@@ -4,8 +4,9 @@
       <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
     <div class='col-md-7'>
+      <!-- エラーメッセージ -->
       <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーが発生しました
+        <%= @post.errors.count %>件の入力に誤りがあります！
         <ul>
           <% @post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -17,7 +18,7 @@
       <%= form_with model: @post, url: posts_path do |f| %>
         <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
         
-        <%= f.label :投稿写真の場所 %>
+        <%= f.label :タイトル（投稿写真の場所） %>
         <%= f.text_field :place_name, class: "form-control place_name" %>
         
         <%= f.label :投稿内容 %>
