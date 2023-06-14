@@ -4,6 +4,7 @@
       <h3>管理者情報</h3>
       <%= render 'admin/homes/info', end_users: @end_users, posts: @posts %>
     </div>
+    
     <div class='col-md-8'>
       <h3><%= @post.end_user.name %>さんの投稿</h3>
       <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
@@ -19,9 +20,11 @@
 
         <p><%= @post.caption %></p>
         
-        <%= link_to "非表示", admin_top_path, class: "btn btn-outline-secondary" %>
+        <!-- %= link_to "非表示", admin_top_path, class: "btn btn-outline-secondary" %>-->
         <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
       </div>
     </div>
+    
+    <%= render "public/post_comments/index", post: @post, end_user: @end_user %>
   </div>
 </div>

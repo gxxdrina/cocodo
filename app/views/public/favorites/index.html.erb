@@ -8,12 +8,12 @@
       <h3>自分がいいねした投稿一覧</h3>
       <div class="row">
         <% @favorite_posts.each do |favorite| %>
-          <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap">
+          <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap text-center">
             <%= link_to post_path(favorite.post) do %>
               <!--投稿写真の１枚目のみを表示-->
               <%= image_tag favorite.post.post_images[0].variant(resize: '230x230') %><br>
               
-              <%= truncate(favorite.post.place_name, length: 15, omission: '...') %>
+              <%= truncate(favorite.post.place_name, length: 10, omission: '...') %>
               
               <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
               <%= favorite.post.favorites.count %>

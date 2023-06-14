@@ -8,9 +8,9 @@
           <% else %>
             <%= image_tag "default-image.jpg", class: "rounded-circle", size: "50x50" %>
           <% end %>
-        <td><%= end_user.name %></td>
-        <td>
-          <%= end_user.user_status ? '退会済' : '利用中'  %><br>
+        <td class="align-middle"><%= end_user.name %></td>
+        <td class="align-middle">
+          <%= end_user.user_status ? '退会済' : '利用中'  %>
 
           <% if end_user.user_status == false %>
             <%= link_to '退会にする', admin_end_user_path(end_user, end_user: { user_status: false }), method: :patch, data: { confirm: '本当に退会していいですか？' }, class: 'btn btn-danger btn-sm' %>
@@ -18,7 +18,7 @@
             <%= link_to '有効にする', admin_end_user_path(end_user, end_user: { user_status: true }), method: :patch, class: 'btn btn-primary btn-sm' %>
           <% end %>
         </td>
-        <td><%= link_to '投稿を見る', admin_end_user_path(end_user) %></td>
+        <td class="align-middle"><%= link_to '投稿を見る', admin_end_user_path(end_user), class: 'btn btn-secondary btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

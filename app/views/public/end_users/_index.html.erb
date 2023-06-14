@@ -8,17 +8,17 @@
           <% else %>
             <%= image_tag "default-image.jpg", class: "rounded-circle", size: "50x50" %>
           <% end %>
-        <td><%= end_user.name %></td>
-        <td>
+        <td class="align-middle"><%= end_user.name %></td>
+        <td class="align-middle text-center">
           <% if current_end_user != end_user%>
             <% if current_end_user.following?(end_user) %>
-              <%= link_to "フォローをやめる", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+              <%= link_to "フォローをやめる", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info btn-sm" %>
             <% else %>
-              <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+              <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success btn-sm" %>
             <% end %>
           <% end %>
         </td>
-        <td><%= link_to '投稿を見る', end_user %></td>
+        <td class="align-middle"><%= link_to '投稿を見る', end_user, class: 'btn btn-secondary btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

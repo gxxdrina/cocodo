@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   validates :place_name, presence:true, length:{ maximum: 20 }
   validates :caption, presence:true
+  validates :post_images, presence:true
 
   ## いいねしているかどうかを判定するメソッド
   def favorited_by?(end_user)

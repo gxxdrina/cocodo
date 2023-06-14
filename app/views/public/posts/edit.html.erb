@@ -9,15 +9,15 @@
             <% end %>
           </div>
           <div class="mb-2">
-            <span>投稿写真を変更する</span>  
+            <strong>投稿写真を変更する</strong><br>
             <%= f.file_field :post_images, direct_upload: true, multiple: true %>
           </div>
           <div>
-            <%= f.label :投稿写真の場所 %>
+            <b><%= f.label :タイトル %></b>
             <%= f.text_field :place_name, class: 'form-control book_title' %>
           </div>
           <div class="form-group">
-            <%= f.label :投稿内容 %>
+            <b><%= f.label :投稿内容 %></b>
             <%= f.text_area :caption, class: 'form-control book_body' %>
           </div>
           <div class="form-group">

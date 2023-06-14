@@ -2,28 +2,29 @@
   <tr>
   <% if end_user.profile_image %> 
     <%= image_tag end_user.get_profile_image, class: "rounded-circle mb-2" , size: '100x100' %>
-  <% else %>  <!-- プロフィール画像が設定されていない場合-->
+  <% else %>
+  <!-- プロフィール画像が設定されていない場合 -->
     <%= image_tag "default-image.jpg", class: "rounded-circle", size: "100x100" %>
   <% end %>
   </tr>
   <tr>
-    <th>ユーザー名</th>
+    <td>ユーザー名</td>
     <th><%= end_user.name %></th>
   </tr>
   <tr>
-	<th>自己紹介</th>
-  	<th><%= end_user.introduction %></th>
+	<td>自己紹介</th>
+  	<th><%= end_user.introduction %></td>
   </tr>
   <tr>
-    <th>投稿数</th>
+    <td>投稿数</td>
     <th><%= link_to end_user.posts.count, end_user_path(end_user) %></th>
   </tr>
   <tr>
-    <th>フォロー中</th>
+    <td>フォロー中</td>
     <th><%= link_to end_user.followings.count, end_user_followings_path(end_user) %></th>
   </tr>
   <tr>
-    <th>フォロワー</th>
+    <td>フォロワー</td>
     <th><%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
   </tr>
 </table>

@@ -4,7 +4,10 @@ class Admin::PostsController < ApplicationController
   def show
     @end_users = EndUser.all
     @posts = Post.all
+    
     @post = Post.find(params[:id])
+    @end_user = @post.end_user
+
   end
   
   def destroy

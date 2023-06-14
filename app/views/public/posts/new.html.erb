@@ -4,6 +4,15 @@
       <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
     <div class='col-md-7'>
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      
       <h3>新規投稿</h3>
       <%= form_with model: @post, url: posts_path do |f| %>
         <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>

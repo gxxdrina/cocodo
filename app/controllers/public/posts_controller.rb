@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_end_user!
+  # before_action :authenticate_end_user!
   
   def new
     @end_user = current_end_user
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "投稿しました。"
     else
-      flash[:notice] = "入力に誤りがあります。"
+       @end_user = current_end_user
       render 'new'
     end
   end
