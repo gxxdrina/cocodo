@@ -14,6 +14,7 @@ class Admin::EndUsersController < ApplicationController
   def update
     end_user = EndUser.find(params[:id])
     end_user.update(end_user_params)
+    pp end_user
     redirect_to admin_end_users_path, notice: "会員ステータスを変更しました！"
   end
   

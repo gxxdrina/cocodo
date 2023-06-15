@@ -12,9 +12,9 @@
         <td class="align-middle">
           <%= end_user.user_status ? '退会済' : '利用中'  %><br>
             <% if end_user.user_status == false %>
-              <%= link_to '退会にする', admin_end_user_path(end_user, end_user: { user_status: false }), method: :patch, data: { confirm: '本当に退会していいですか？' }, class: 'btn btn-danger btn-sm' %>
+              <%= link_to '退会にする', admin_end_user_path(end_user, end_user: { user_status: true }), method: :patch, data: { confirm: '本当に退会していいですか？' }, class: 'btn btn-danger btn-sm' %>
             <% else %>
-              <%= link_to '有効にする', admin_end_user_path(end_user, end_user: { user_status: true }), method: :patch, class: 'btn btn-primary btn-sm' %>
+              <%= link_to '有効にする', admin_end_user_path(end_user, end_user: { user_status: false }), method: :patch, class: 'btn btn-primary btn-sm' %>
             <% end %>
         </td>
         <td class="align-middle">
