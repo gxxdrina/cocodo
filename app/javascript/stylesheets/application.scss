@@ -7,3 +7,8 @@
 * { 
   font-family: 'Klee One', cursive;
 }
+
+// 背景画像を表示できるようにする
+body {
+  background-image: image-url("hoge.jpg");
+}
