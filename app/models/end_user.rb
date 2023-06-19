@@ -30,7 +30,8 @@ class EndUser < ApplicationRecord
   
   ## ゲストログイン方法
   def self.guest
-    find_or_create_by!(name: 'ゲスト' ,email: 'guest@example.com') do |end_user|
+    find_or_create_by!(email: 'guest@example.com') do |end_user|
+      end_user.name = 'ゲスト'
       end_user.password = SecureRandom.urlsafe_base64  #パスワードはランダムな文字列
     end
   end
