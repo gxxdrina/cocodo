@@ -60,10 +60,13 @@ gem 'rails-i18n'
 
 gem 'devise'
 
-gem 'pry-rails'
+gem 'kaminari'
+
+group :development, :test do
+  gem 'pry-rails'
   # デバッグをしたい箇所をブレークポイントとして、binding.pryを記述する
   # Viewファイルでは<% binding.pry %>
-  
+end
   
 ## MySQLを利用するために必要なgem
 gem 'dotenv-rails'

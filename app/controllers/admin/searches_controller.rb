@@ -4,8 +4,8 @@ class Admin::SearchesController < ApplicationController
     @end_users = EndUser.all
     @posts = Post.all
   
-    @search_posts = Post.search(params[:keyword])
-    @search_end_users = EndUser.search(params[:keyword])
+    @search_posts = Post.search(params[:keyword]).page(params[:page]).per(9)
+    @search_end_users = EndUser.search(params[:keyword]).page(params[:page]).per(10)
     if @search_posts.empty? && @search_end_users.empty?
       flash.now[:notice] = "キーワードに関連する 投稿・ユーザーが見つかりません。"
     end

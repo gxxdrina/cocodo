@@ -8,6 +8,9 @@
       <h3>検索結果</h3>
       <%= render 'admin/posts/index', posts: @search_posts %>
       <%= render 'admin/end_users/index', end_users: @search_end_users %>
+      
+      <%= paginate @search_posts %>
+      <%= paginate @search_end_users %>
     </div>
   </div>
 </div>

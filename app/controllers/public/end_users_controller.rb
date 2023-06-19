@@ -3,7 +3,7 @@ class Public::EndUsersController < ApplicationController
 
   ## 全会員の投稿一覧：新着順で表示
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(3)
   end
   
   ## 全会員の投稿一覧：いいねの多い順で表示（いいねゼロも含む）
@@ -14,12 +14,14 @@ class Public::EndUsersController < ApplicationController
                      .group(:id)
                       # いいねの数で降順を指定
                      .order('COUNT(favorites.id) DESC')
+                      # ページネーション
+                     .page(params[:page]).per(9)
   end
   
   ## １投稿者の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
-    @posts = @end_user.posts
+    @posts = @end_user.posts.page(params[:page]).per(9)
   end
   
   def edit

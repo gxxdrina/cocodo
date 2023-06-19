@@ -7,6 +7,8 @@
     
     <div class="col-md-9">
       <%= render 'admin/end_users/index', end_users: @end_users %>
+      
+      <%= paginate @end_users %>
     </div>
   </div>
 </div>

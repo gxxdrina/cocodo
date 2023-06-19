@@ -3,6 +3,8 @@
     <div class='col-md-10'>
       <h3><%= @end_user.name %> さんの投稿一覧（全<%= @end_user.posts.count %>件）</h3>
       <%= render 'admin/posts/index', posts: @posts %>
+      
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

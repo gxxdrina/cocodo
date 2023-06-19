@@ -1,14 +1,16 @@
 class Admin::EndUsersController < ApplicationController
   before_action :authenticate_admin!
   
+  # 会員一覧
   def index
-    @end_users = EndUser.all
+    @end_users = EndUser.all.page(params[:page]).per(10)
     @posts = Post.all
   end
 
+  # 一会員の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
-    @posts = @end_user.posts
+    @posts = @end_user.posts.page(params[:page]).per(12)
   end
   
   def update
