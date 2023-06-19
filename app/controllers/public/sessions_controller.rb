@@ -46,17 +46,18 @@ class Public::SessionsController < Devise::SessionsController
   ## 退会しているかを判断するメソッド
   def end_user_state
     # find_by メソッド：モデルから入力された email を検索し、該当する 1 件を取得する用途で使用
-    @end_user = EndUser.find_by(email: params[:end_user][:email])
-    # アカウントを取得できなかった場合は、このメソッドを終了する
-    return if !@end_user
-  
-    # valid_password?メソッド：find_by メソッドで特定したアカウントのパスワードと、ログイン画面で入力されたパスワードが一致しているかを判断
-    if @end_user.valid_password?(params[:end_user][:password]) && !@end_user.user_status
-                                                             # && (@end_user.user_status == true) を簡略化
-      flash[:danger] = "こちらは、退会済みのアカウントです。別のメールアドレスで、再度ご登録をしてください。"
-      redirect_to new_end_user_registration_path
+    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    
+    # アカウントを取得できなかった場合は、新規登録へ
+    if @end_user.nil?
+      redirect_to new_end_user_registration_path, notice: '新規登録しましょう！'
     else
-      flash[:notice] = "項目を正しく入力してください。"
+      # valid_password?メソッド：find_by メソッドで特定したアカウントのパスワードと、ログイン画面で入力されたパスワードが一致しているかを判断
+      if @end_user.valid_password?(params[:end_user][:password]) && @end_user.user_status
+        redirect_to new_end_user_registration_path, notice: "こちらは、退会済みのアカウントです。別のメールアドレスで、再度ご登録をしてください。"
+      else
+        flash[:notice] = "項目を正しく入力してください。"
+      end
     end
   end
   
