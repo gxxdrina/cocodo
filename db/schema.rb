@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_04_144219) do
+ActiveRecord::Schema.define(version: 2023_06_20_065057) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  ## 管理者
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  ## 会員
   create_table "end_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,7 +67,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
-  ## いいね
   create_table "favorites", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -77,7 +74,22 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## コメント
+  create_table "hashtag_post_relations", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_hashtag_post_relations_on_hashtag_id"
+    t.index ["post_id"], name: "index_hashtag_post_relations_on_post_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "post_id"
@@ -86,7 +98,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## 投稿
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
     t.string "place_name"
@@ -95,7 +106,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  ## フォロー
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -105,4 +115,6 @@ ActiveRecord::Schema.define(version: 2023_06_04_144219) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hashtag_post_relations", "hashtags"
+  add_foreign_key "hashtag_post_relations", "posts"
 end

@@ -16,9 +16,11 @@
         
         投稿日：<%= @post.created_at.strftime("%Y/%m/%d") %>
         <p>「<%= @post.place_name %>」</p> 
-
-        <p><%= @post.caption %></p>
         
+        <p>
+          <%= render_with_hashtags(@post.caption) %>
+        </p>
+
         <!-- 自分の投稿の場合はボタンを表示 -->
         <% if @end_user == current_end_user %>
           <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary" %>

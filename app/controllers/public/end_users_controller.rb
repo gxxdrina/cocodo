@@ -3,7 +3,7 @@ class Public::EndUsersController < ApplicationController
 
   ## 全会員の投稿一覧：新着順で表示
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(3)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(9)
   end
   
   ## 全会員の投稿一覧：いいねの多い順で表示（いいねゼロも含む）

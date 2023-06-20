@@ -48,8 +48,20 @@ class Public::PostsController < ApplicationController
     redirect_to end_user_path(current_end_user)
   end
   
+  def hashtag
+    if params[:name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
+    else
+      name = params[:name]
+      name = name.downcase
+      @hashtag = Hashtag.find_by(hashname: name)
+      @posts = @hashtag.posts
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
+    end
+  end
+  
   private
   def post_params
-    params.require(:post).permit(:end_user_id, :place_name, :caption, post_images: [])
+    params.require(:post).permit(:end_user_id, :place_name, :caption, :hashbody, hashtag_ids: [], post_images: [])
   end
 end

@@ -14,28 +14,13 @@
       </div>
         
       <div class="row ml-auto">
-        <!-- 検索フォーム（ログイン中のみ表示）-->
-        <div class="mr-2 mt-1">
-          <% if end_user_signed_in? %>
-            <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
-              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
-            <% end %>
-          <% elsif admin_signed_in? %>
-            <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
-              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
-            <% end %>
-          <% end %>
-        </div>
-
         <!--ハンバーガーメニュー-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         
         <div class="collapse navbar-collapse small" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ml-auto">
             <!-- 会員ログイン時 -->
             <% if end_user_signed_in? %>
               <li class="nav-item">
@@ -109,6 +94,21 @@
               </li>
             <% end %>
           </ul>
+        </div>
+        
+        <!-- 検索フォーム（ログイン中のみ表示）-->
+        <div class="mr-2 mt-1 ml-auto">
+          <% if end_user_signed_in? %>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
+              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
+            <% end %>
+          <% elsif admin_signed_in? %>
+            <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
+              <%= f.submit "検索", class: "btn btn-secondary btn-sm mb-1" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
 

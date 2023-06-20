@@ -40,12 +40,18 @@ Rails.application.routes.draw do
       
       ## favorites
       resource :favorites, only: [:create, :destroy]
-      get 'favorites' => 'favorites#index', as: 'index_my_favorite'
       # resource(単数)だとURLにidが入らない＝1つの投稿に対して1回しかいいねできない
+      get 'favorites' => 'favorites#index', as: 'index_my_favorite'
+      
     end
     
     ## searches
     get "search" => "searches#search"
+    
+    ## hashtags
+    get 'post/hashtag/:name' => 'posts#hashtag'
+    get 'post/hashtag' => 'posts#hashtag'
+
   end
   
   

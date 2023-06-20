@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
     <% posts.each do |posts| %>
-      <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap text-center">
+      <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 text-center">
         <%= link_to post_path(posts) do %> 
           <!--投稿写真の１枚目のみを表示-->
           <%= image_tag posts.post_images[0].variant(resize: '230x200'), class: "rounded" %><br>
-          
           <%= truncate(posts.place_name, length: 10, omission: '...') %>
           
           <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= posts.favorites.count %>
-
+          <%= posts.favorites.count %><br>
+          
+          <% posts.hashtags.each do |hashtag| %>
+            <%= link_to "##{hashtag.hashname}","/post/hashtag/#{hashtag.hashname}" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

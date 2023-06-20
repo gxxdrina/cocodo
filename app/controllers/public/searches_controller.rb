@@ -1,7 +1,7 @@
 class Public::SearchesController < ApplicationController
 
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.joins(:hashtags).search(params[:keyword])
     @end_users = EndUser.search(params[:keyword])
     
     if @posts.empty? && @end_users.empty?
