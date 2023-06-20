@@ -39,13 +39,28 @@
 
 
 ## 設計書
-<...>
+### ER図
 
+
+## 開発環境での閲覧方法
+```
+$ git clone git@github.com:gxxdrina/cocodo.git
+$ cd cocodo
+$ rails db:migrate
+$ rails db:seed
+$ yarn install
+$ bundle install
+```
 
 ## 管理者のログイン方法
-email: 'admin@example.com'  
-password: 'adminadmin'  
-$ rails db:seed  
+メールアドレス
+```
+ admin@example.com  
+```
+パスワード
+```
+adminadmin  
+```
 
 
 ## 開発環境

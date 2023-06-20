@@ -3,10 +3,14 @@
     <div class="col-md-3">
       <%= render 'info', end_user: current_end_user %>
     </div>
+    
     <div class='col-md-9'>
-      <h3>投稿一覧</h3>
-      <%= render 'public/posts/index', posts: @posts %>
+      <div style="display: flex; align-items: center;">
+        <i class="fa-solid fa-images fa-lg" style="color: #420000;"></i>
+        <h4 style="font-size: 24px; margin-left: 8px;">みんなの投稿</h4>
+      </div>
       
+      <%= render 'public/posts/index', posts: @posts %>
       <%= paginate @posts %>
     </div>
   </div>

@@ -51,7 +51,6 @@ Rails.application.routes.draw do
     ## hashtags
     get 'post/hashtag/:name' => 'posts#hashtag'
     get 'post/hashtag' => 'posts#hashtag'
-
   end
   
   

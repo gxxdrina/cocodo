@@ -4,7 +4,7 @@
       <%= render 'info', end_user: @end_user %>
     </div>
     <div class='col-md-9'>
-      <h3><%= @end_user.name %> さんの投稿一覧</h3>
+      <h4><%= @end_user.name %> さんの投稿一覧</h4>
       <%= render 'public/posts/index', posts: @posts %>
       
       <%= paginate @posts %>
