@@ -1,5 +1,20 @@
-<div class="class">
-  <div class="class">
-    <h2>会員の退会確認画面</h2>
-  </div>
+<div class="container px-5 px-sm-0">
+  <center>
+    <h4 class="mb-3">本当に退会しますか？</h4>
+    <p>退会すると、このアカウントは使用できなくなります。</p>
+    <p class="m-0">これまでの投稿は消えませんので</p>
+    <p>消したい投稿は、退会の前に削除してください。</p>
+
+    <p class="small mb-0">退会後、同じメールアドレスでのご登録はできません。</p>
+    <p class="small">再度ご登録する際は、違うメールアドレスをご使用ください。</p>
+    
+    <%= link_to end_users_path, class:'btn btn-outline-secondary' do %>
+      <i class="fas fa-heart"></i>退会しない
+    <% end %>
+    
+    <%= link_to resign_end_user_path, method: :patch, class:'btn btn-outline-danger' do %>
+      <i class="fas fa-heart-broken"></i>退会する
+    <% end %>
+
+  </center>
 </div>

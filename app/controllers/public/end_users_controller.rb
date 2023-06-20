@@ -41,7 +41,7 @@ class Public::EndUsersController < ApplicationController
   end
   
   def resign
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
     @end_user.update(user_status: true)
     reset_session
     flash[:notice] = "ご利用ありがとうございました。"
