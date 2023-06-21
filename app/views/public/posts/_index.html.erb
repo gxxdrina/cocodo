@@ -2,17 +2,26 @@
   <div class="row">
     <% posts.each do |posts| %>
       <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 text-center">
-        <%= link_to post_path(posts) do %> 
-          <!--投稿写真の１枚目のみを表示-->
-          <%= image_tag posts.post_images[0].variant(resize: '230x200'), class: "rounded" %><br>
-          <%= truncate(posts.place_name, length: 10, omission: '...') %>
+        <%= link_to post_path(posts), class: "text-dark" do %> 
+          <!-- 投稿写真の１枚目のみを表示 -->
+          <%= image_tag posts.post_images[0].variant(resize: '230x230'), class: "rounded" %><br>
+          <%= truncate(posts.place_name, length: 10, omission: '...') %><br>
           
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= posts.favorites.count %><br>
-          
+          <!-- ハッシュタグ -->
           <% posts.hashtags.each do |hashtag| %>
             <%= link_to "##{hashtag.hashname}","/post/hashtag/#{hashtag.hashname}" %>
           <% end %>
+          
+          <!-- いいねボタン -->
+          <div class="favorite-btn d-flex justify-content-end align-items-baseline">
+            <% if posts.favorited_by?(current_end_user) %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: #eb0000;"></i>
+              <%= posts.favorites.count %>
+            <% else %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: #828997;"></i>
+              <%= posts.favorites.count %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>

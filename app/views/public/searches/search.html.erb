@@ -4,7 +4,11 @@
       <%= render 'public/end_users/info', end_user: current_end_user %>
     </div>
     <div class='col-md-9'>
-      <h3>検索結果</h3>
+      <div style="display: flex; align-items: center;">
+        <i class="fa-solid fa-magnifying-glass-location fa-lg" style="color: #420000;"></i>
+        <h4 style="margin-left: 8px;">検索結果</h4>
+      </div>
+      
       <%= render 'public/posts/index', posts: @posts %>
       <%= render 'public/end_users/index', end_users: @end_users %>
     </div>

@@ -14,6 +14,6 @@ class Public::FavoritesController < ApplicationController
   end
   
   def index
-    @favorite_posts = current_end_user.favorites.includes(:post).page(params[:page]).per(9)
+    @favorite_posts = Kaminari.paginate_array(current_end_user.favorites.includes(:post)).page(params[:page]).per(6)
   end
 end

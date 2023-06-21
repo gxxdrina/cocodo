@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_end_user!
-  
+  before_action :check_guest, only: [:create, :update, :destroy]
+
   def new
     @end_user = current_end_user
     @post = Post.new

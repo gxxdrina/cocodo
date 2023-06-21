@@ -1,4 +1,4 @@
-<table>
+<table class="container-fluid">
   <tbody>
   <% post.post_comments.each do |post_comment| %>
   <tr class="border-top">
@@ -16,7 +16,9 @@
     </td>
     <td>
       <% if post_comment.end_user == current_end_user %>
-      <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete do %>
+          <i class="fa-solid fa-circle-xmark text-right" style="color: #E97777;"></i>
+        <% end %>
       <% end %>
     </td>
   </tr>

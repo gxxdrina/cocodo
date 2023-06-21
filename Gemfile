@@ -61,6 +61,7 @@ gem 'rails-i18n'
 gem 'devise'
 
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem 'pry-rails'

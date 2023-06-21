@@ -55,7 +55,7 @@ $ bundle install
 ## 管理者のログイン方法
 メールアドレス
 ```
- admin@example.com  
+admin@example.com  
 ```
 パスワード
 ```

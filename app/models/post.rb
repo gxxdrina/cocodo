@@ -17,7 +17,6 @@ class Post < ApplicationRecord
     favorites.exists?(end_user_id: end_user.id)
   end
 
-
   ## ハッシュタグ作成
   after_create do
     post = Post.find_by(id: self.id)
@@ -39,13 +38,13 @@ class Post < ApplicationRecord
     post.hashtags.clear
     hashtags = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
+      # downcaseで小文字に置き換え、'#' '＃'を削除してキーワードを代入する
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#' '＃'))
       post.hashtags << tag
     end
   end
 
-
-  ## 会員のキーワード検索
+  ## 投稿・ハッシュタグのキーワード検索
   def self.search(keyword)
     if keyword.present?
       where(['place_name LIKE ?', "%#{keyword}%"]).where(['hashname LIKE ?', "%#{keyword}%"])

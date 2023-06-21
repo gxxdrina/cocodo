@@ -36,12 +36,12 @@ class EndUser < ApplicationRecord
     end
   end
 
-  ## 投稿のキーワード検索
+  ## 会員のキーワード検索
   def self.search(keyword)
     if keyword.present?
       where(['name LIKE ?', "%#{keyword}%"])
     else
-      none
+      none  #キーワードがない場合はフラッシュメッセージを表示して結果を返さない
     end
   end
 

@@ -6,11 +6,12 @@
     <div class='col-md-9'>
       <div style="display: flex; align-items: center;">
         <i class="fa-solid fa-fire fa-beat fa-lg" style="color: #eb0000;"></i>
-        <h4 style="font-size: 24px; margin-left: 8px;">人気スポット</h4>
+        <h4 style="margin-left: 8px;">人気スポット</h4>
       </div>
-      <%= render 'public/posts/index', posts: @favorite_posts %>
       
+      <%= render 'public/posts/index', posts: @favorite_posts %>
       <%= paginate @favorite_posts %>
+      
     </div>
   </div>
 </div>

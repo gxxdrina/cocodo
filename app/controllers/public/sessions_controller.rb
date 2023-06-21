@@ -40,7 +40,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     end_user = EndUser.guest
     sign_in end_user 
-    redirect_to end_users_path, notice: 'ゲストユーザーでログインしました！'
+    redirect_to end_users_path
   end
   
   ## 退会しているかを判断するメソッド
@@ -48,15 +48,16 @@ class Public::SessionsController < Devise::SessionsController
     # find_by メソッド：モデルから入力された email を検索し、該当する 1 件を取得する用途で使用
     @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
     
-    # アカウントを取得できなかった場合は、新規登録へ
+    # メールアドレスが取得できない場合
     if @end_user.nil?
-      redirect_to new_end_user_registration_path, notice: '新規登録しましょう！'
+      redirect_to new_end_user_session_path, notice: 'メールアドレスが違います。'
     else
       # valid_password?メソッド：find_by メソッドで特定したアカウントのパスワードと、ログイン画面で入力されたパスワードが一致しているかを判断
       if @end_user.valid_password?(params[:end_user][:password]) && @end_user.user_status
         redirect_to new_end_user_registration_path, notice: "こちらは、退会済みのアカウントです。別のメールアドレスで、再度ご登録をしてください。"
       else
-        flash[:notice] = "項目を正しく入力してください。"
+      # メールアドレスは存在するが、パスワードが違う場合
+        redirect_to new_end_user_session_path, notice: 'パスワードが違います。'
       end
     end
   end

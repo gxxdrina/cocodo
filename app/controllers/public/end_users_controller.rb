@@ -3,7 +3,7 @@ class Public::EndUsersController < ApplicationController
 
   ## 全会員の投稿一覧：新着順で表示
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(9)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(6)
   end
   
   ## 全会員の投稿一覧：いいねの多い順で表示（いいねゼロも含む）
@@ -15,25 +15,32 @@ class Public::EndUsersController < ApplicationController
                       # いいねの数で降順を指定
                      .order('COUNT(favorites.id) DESC')
                       # ページネーション
-                     .page(params[:page]).per(9)
+                     .page(params[:page]).per(6)
   end
   
   ## １投稿者の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
-    @posts = @end_user.posts.page(params[:page]).per(9)
+    @posts = @end_user.posts.page(params[:page]).per(6)
   end
   
   def edit
     @end_user = current_end_user
   end
-  
+    
   def update
-    @end_user = EndUser.find(params[:id])
-    if @end_user.update(end_user_params)
-      redirect_to end_user_path(current_end_user), notice: "ユーザー情報を更新しました！"
+    if current_end_user != EndUser.guest
+      # ゲストではないユーザー
+      @end_user = current_end_user
+      if @end_user.update(end_user_params)
+        redirect_to end_user_path(@end_user), notice: "ユーザー情報を更新しました！"
+      else
+        render :edit
+      end
     else
-      render :edit
+      # ゲストユーザー
+      flash[:alert] = "ゲストユーザーは編集できません！"
+      redirect_to end_users_path
     end
   end
   
