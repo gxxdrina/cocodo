@@ -17,7 +17,7 @@
     <td>
       <% if post_comment.end_user == current_end_user %>
         <%= link_to post_post_comment_path(post, post_comment), method: :delete do %>
-          <i class="fa-solid fa-circle-xmark text-right" style="color: #E97777;"></i>
+          <%= image_tag '1061.jpg', size: '23x23' %>
         <% end %>
       <% end %>
     </td>
