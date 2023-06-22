@@ -16,11 +16,13 @@
           <%= render 'public/favorites/favorite-btn', post: @post %>
         </div>
         
+        <!-- 投稿日・場所（投稿タイトル）-->
         <%= @post.created_at.strftime("%Y/%m/%d") %>
         「<%= @post.place_name %>」
         
         <p>
-          <%= render_with_hashtags(@post.caption) %>
+          <!-- safe_joinメソッドで改行・空白を適用し、render_with_hashtagsメソッドでハッシュタグをリンクに変換 -->
+          <%= safe_join(@post.caption.split("\n").map { |line| render_with_hashtags(line) }, tag(:br)) %>
         </p>
 
         <!-- 自分の投稿の場合はボタンを表示 -->

@@ -97,7 +97,7 @@
         </div>
         
         <!-- 検索フォーム（ログイン中のみ表示）-->
-        <div class="col text-right ml-auto">
+        <div class="col text-right">
           <% if end_user_signed_in? %>
             <%= form_with url: search_path, method: :get, local: true do |f| %>
               <%= f.text_field :keyword, value: @keyword, placeholder: '検索ワードを入力' %>
