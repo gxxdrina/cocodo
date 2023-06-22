@@ -4,9 +4,9 @@
       <%= render 'info', end_user: current_end_user %>
     </div>
     <div class='col-md-9'>
-      <div style="display: flex; align-items: center;">
-        <i class="fa-solid fa-fire fa-beat fa-lg" style="color: #eb0000;"></i>
-        <h4 style="margin-left: 8px;">人気スポット</h4>
+      <div class="d-flex align-items-end">
+        <%= image_tag 'ic050.png', size: '45x45' %>
+        <h4>人気スポット</h4>
       </div>
       
       <%= render 'public/posts/index', posts: @favorite_posts %>

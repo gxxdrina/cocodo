@@ -32,11 +32,14 @@
 
       <div class="d-flex flex-wrap justify-content-center">
         <% @posts.each do |posts| %>
-          <div class="m-1">
-          <%= link_to post_path(posts) do %>
-            <%= image_tag posts.post_images[0].variant(resize: '250x250'), class: "rounded" %><br>
+          <div class="shadow-sm p-3 m-1 bg-white rounded border border-1">
+          <%= link_to post_path(posts), class: "text-dark" do %>
+            <%= image_tag posts.post_images[0].variant(resize: '230x230'), class: "rounded" %><br>
             <%= truncate(posts.place_name, length: 10, omission: '...') %>
-            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= posts.favorites.count %>
+            
+            <div class="favorite-btn">
+              <%= image_tag '709(1).jpg', size: '23x23' %><%= posts.favorites.count %> 
+            </div>
           <% end %>
           </div>
         <% end %>

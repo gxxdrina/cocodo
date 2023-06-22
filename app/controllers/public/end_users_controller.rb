@@ -21,7 +21,7 @@ class Public::EndUsersController < ApplicationController
   ## １投稿者の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
-    @posts = @end_user.posts.page(params[:page]).per(6)
+    @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
   
   def edit

@@ -5,9 +5,9 @@
     </div>
     
     <div class='col-md-9'>
-      <div style="display: flex; align-items: center;">
-        <i class="fa-solid fa-images fa-lg" style="color: #420000;"></i>
-        <h4 style="margin-left: 8px;">みんなの投稿</h4>
+      <div class="d-flex align-items-end">
+        <%= image_tag 'ic024.png', size: '45x45' %>
+        <h4>みんなの投稿</h4>
       </div>
       
       <%= render 'public/posts/index', posts: @posts %>

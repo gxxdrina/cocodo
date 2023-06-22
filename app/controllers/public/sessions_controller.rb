@@ -55,10 +55,17 @@ class Public::SessionsController < Devise::SessionsController
       # valid_password?メソッド：find_by メソッドで特定したアカウントのパスワードと、ログイン画面で入力されたパスワードが一致しているかを判断
       if @end_user.valid_password?(params[:end_user][:password]) && @end_user.user_status
         redirect_to new_end_user_registration_path, notice: "こちらは、退会済みのアカウントです。別のメールアドレスで、再度ご登録をしてください。"
-      else
       # メールアドレスは存在するが、パスワードが違う場合
-        redirect_to new_end_user_session_path, notice: 'パスワードが違います。'
+      elsif !@end_user.valid_password?(params[:end_user][:password])
+        flash.now[:notice] = "パスワードが違います。"
+        render :new
       end
     end
+
+      ## 下記だと、パスワードが正しくてもログインできなくなる。
+      # else
+      # # メールアドレスは存在するが、パスワードが違う場合
+      #   redirect_to new_end_user_session_path, notice: 'パスワードが違います。'
+      # end
   end
 end

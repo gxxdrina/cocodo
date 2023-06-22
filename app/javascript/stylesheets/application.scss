@@ -8,6 +8,12 @@
   font-family: 'Klee One', cursive;
 }
 
+.favorite-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .pagination {
   justify-content: center;
 }
