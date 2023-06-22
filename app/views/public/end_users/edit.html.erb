@@ -12,27 +12,28 @@
       <% end %>
       
       <%= form_with model:@end_user, local:true do |f| %>
-        <div class="text-center mb-2">
+        <div class="text-center mb-4">
           <% if @end_user.profile_image %> 
-            <%= image_tag @end_user.get_profile_image, class: "rounded-circle" , size: '100x100' %>
+            <%= image_tag @end_user.get_profile_image, class: "rounded-circle" , size: '140x140' %>
           <% else %>
           <!-- プロフィール画像が設定されていない場合はデフォルト画像 -->
-            <%= image_tag "default-image.jpg", class: "rounded-circle", size: "100x100" %>
+            <%= image_tag "default-image.jpg", class: "rounded-circle", size: "140x140" %>
           <% end %>
         </div>
-        <div class="d-flex justify-content-center mb-4">
+        <div class="mb-2">
+          <b><%= f.label :プロフィール画像を変更する %></b>
           <%= f.file_field :profile_image, accept: 'image/*' %>
         </div>
         <div class="mb-2">
-          <%= f.label :ユーザー名 %>
+          <b><%= f.label :ユーザー名 %></b>
           <%= f.text_field :name, class: "form-control name" %>
         </div>
         <div class="mb-2">
-          <%= f.label :自己紹介 %>
+          <b><%= f.label :自己紹介 %></b>
           <%= f.text_area :introduction, class: "form-control introduction", style: "height: 100px;" %>
         </div>
         <div>
-          <%= f.label :メールアドレス %>
+          <b><%= f.label :メールアドレス %></b>
           <%= f.text_field :email, class: "form-control email" %>
         </div>
         <div class="right-button">

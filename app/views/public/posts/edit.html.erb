@@ -3,24 +3,32 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h3>投稿の編集画面</h3>
         <%= form_with model: @post, local:true do |f| %>
-          <div class="form-group">
-            <% @post.post_images.each do |image| %>
-              <%= image_tag image.variant(resize: '200x200'), class: "mt-1" %>
-            <% end %>
-          </div>
+          <% @post.post_images.each do |image| %>
+            <%= image_tag image.variant(resize: '200x200'), class: "mt-1" %>
+          <% end %>
+            
           <div class="mb-2">
-            <strong>投稿写真を変更する</strong><br>
+            <b><%= f.label :投稿写真を変更する %></b><br>
             <%= f.file_field :post_images, direct_upload: true, multiple: true %>
           </div>
-          <div>
+          <div class="mb-2">
             <b><%= f.label :タイトル %></b>
             <%= f.text_field :place_name, class: 'form-control book_title' %>
           </div>
-          <div class="form-group">
+          <div>
             <b><%= f.label :投稿内容 %></b>
-            <%= f.text_area :caption, class: 'form-control book_body' %>
+            <!-- oninput イベントで、入力されたテキストの高さに応じて自動的に高さを調整 -->
+            <%= f.text_area :caption, class: 'form-control book_body', rows: 4, oninput: "autoResize(this)" %>
+            
+            <!-- autoResize 関数 -->
+            <script>
+              function autoResize(textarea) {
+                textarea.style.height = "auto";
+                textarea.style.height = (textarea.scrollHeight + 2) + "px";
+              }
+            </script>
           </div>
-          <div class="form-group">
+          <div class="right-button mt-2">
             <%= f.submit "更新", class: 'btn btn-success' %>
           </div>
         <% end %>

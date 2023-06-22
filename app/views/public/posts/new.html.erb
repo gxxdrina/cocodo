@@ -14,29 +14,36 @@
         </ul>
       <% end %>
       
-      <h3>新規投稿</h3>
+      <h4>おすすめスポットを投稿しよう！</h4>
+      
       <%= form_with model: @post, url: posts_path do |f| %>
-        <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
-        
-        <%= f.label :タイトル（投稿写真の場所など） %>
-        <%= f.text_field :place_name, class: "form-control", placeholder: "箱根のおすすめ旅館" %>
-        
-        <%= f.label :投稿内容 %>
-        <!-- oninput イベントで、入力されたテキストの高さに応じて自動的に高さを調整 -->
-        <%= f.text_area :caption, class: "form-control", placeholder: "○○駅から徒歩５分ほど。#女子旅", rows: 4, oninput: "autoResize(this)" %>
-        
-        <!-- autoResize 関数 -->
-        <script>
-          function autoResize(textarea) {
-            textarea.style.height = "auto";
-            textarea.style.height = (textarea.scrollHeight + 2) + "px";
-          }
-        </script>
+        <div class="mb-4">
+          <b><%= f.label :投稿写真 %></b><br>
+          <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
+        </div>
+        <div class="mb-2">  
+          <b><%= f.label :タイトル（投稿写真の場所など） %></b>
+          <%= f.text_field :place_name, class: "form-control", placeholder: "箱根のおすすめ旅館" %>
+        </div>
+        <div class="mb-2">  
+          <b><%= f.label :投稿内容 %></b>
+          <!-- oninput イベントで、入力されたテキストの高さに応じて自動的に高さを調整 -->
+          <%= f.text_area :caption, class: "form-control", placeholder: "○○駅から徒歩５分ほど。#女子旅", rows: 4, oninput: "autoResize(this)" %>
+          
+          <!-- autoResize 関数 -->
+          <script>
+            function autoResize(textarea) {
+              textarea.style.height = "auto";
+              textarea.style.height = (textarea.scrollHeight + 2) + "px";
+            }
+          </script>
+        </div>
         
         <div class="right-button">
           <%= f.submit "新規投稿", class: 'btn btn-secondary mt-2' %>
         </div>
       <% end %>
+      
     </div>
   </div>
 </div>
