@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿を更新しました！"
     else
-      flash[:notice] = "入力に誤りがあります！"
+      flash[:notice] = "更新できませんでした！"
       render 'edit'
     end
   end

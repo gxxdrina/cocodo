@@ -1,11 +1,24 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3>投稿の編集画面</h3>
+      
+      <div class="text-center mb-3">
+        <h3>投稿の編集</h3>
         <%= form_with model: @post, local:true do |f| %>
           <% @post.post_images.each do |image| %>
-            <%= image_tag image.variant(resize: '200x200'), class: "mt-1" %>
+            <%= image_tag image.variant(resize: '240x240'), class: "rounded mt-2" %>
           <% end %>
+      </div>
+      
+      <!-- エラーメッセージ -->
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件の入力に誤りがあります！
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
             
           <div class="mb-2">
             <b><%= f.label :投稿写真を変更する %></b><br>
@@ -29,7 +42,7 @@
             </script>
           </div>
           <div class="right-button mt-2">
-            <%= f.submit "更新", class: 'btn btn-success' %>
+            <%= f.submit "更新", class: 'btn btn-secondary' %>
           </div>
         <% end %>
     </div>

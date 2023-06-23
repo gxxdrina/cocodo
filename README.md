@@ -28,31 +28,21 @@
 
 ### ターゲットユーザ
 - 旅行が好きな人
-- 旅行先を探したい人
-- お気に入りのスポットを投稿して共有したい人
+- 旅行の思い出を共有したい人
+- 旅行の行き先を悩んでいる人
 
 
 ### 主な利用シーン
-- 行った旅行先の写真や思い出（感想）を記録し、整理する
 - おすすめの場所を共有する
-- これから行きたい旅行先を探す
+- 旅行先の写真や思い出（感想）を記録し、整理する
+- 行ってみたい場所を保存して、旅行の候補地に役立てる
 
 
 ## 設計書
 ### ER図
 
 
-## 開発環境での閲覧方法
-```
-$ git clone git@github.com:gxxdrina/cocodo.git
-$ cd cocodo
-$ rails db:migrate
-$ rails db:seed
-$ yarn install
-$ bundle install
-```
-
-## 管理者のログイン方法
+## 管理者ログインに必要な情報
 メールアドレス
 ```
 admin@example.com  
@@ -60,6 +50,21 @@ admin@example.com
 パスワード
 ```
 adminadmin  
+```
+
+
+## ローカル環境でのアプリケーションの起動
+以下のコマンドを実行してアプリケーションを起動します。  
+（ git方式 ）
+```
+$ git clone git@github.com:gxxdrina/cocodo.git
+$ cd cocodo
+$ bundle install
+$ yarn install
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+$ rails s
 ```
 
 
@@ -72,7 +77,6 @@ adminadmin
 
 
 ## 使用素材
-- ロゴ：Canva　(https://www.canva.com/)
-- アイコン：Font Awesome　(https://fontawesome.com/)
-- フォント：Google fonts　(https://fonts.google.com/)
-
+- ロゴ：Canva (https://www.canva.com/)
+- アイコン：Font Awesome (https://fontawesome.com/), Loose Drawing (https://loosedrawing.com/)
+- フォント：Google fonts (https://fonts.google.com/)

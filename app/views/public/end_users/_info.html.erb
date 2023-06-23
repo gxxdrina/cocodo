@@ -2,7 +2,7 @@
   <% if end_user.profile_image %> 
     <%= image_tag end_user.get_profile_image, class: "rounded-circle" , size: '100x100' %>
   <% else %>
-  <!-- プロフィール画像が設定されていない場合 -->
+  <!-- プロフィール画像が設定されていない場合はデフォルト画像 -->
     <%= image_tag "default-image.jpg", class: "rounded-circle", size: "100x100" %>
   <% end %>
 </div>

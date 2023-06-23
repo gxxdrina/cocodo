@@ -4,6 +4,9 @@
       <%= render 'public/end_users/info', end_user: @end_user %>
     </div>
     <div class='col-md-7'>
+      <div class="text-center mb-2">
+        <h4>新規投稿</h4>
+      </div>
       <!-- エラーメッセージ -->
       <% if @post.errors.any? %>
         <%= @post.errors.count %>件の入力に誤りがあります！
@@ -13,9 +16,7 @@
           <% end %>
         </ul>
       <% end %>
-      
-      <h4>おすすめスポットを投稿しよう！</h4>
-      
+
       <%= form_with model: @post, url: posts_path do |f| %>
         <div class="mb-4">
           <b><%= f.label :投稿写真 %></b><br>
@@ -28,7 +29,7 @@
         <div class="mb-2">  
           <b><%= f.label :投稿内容 %></b>
           <!-- oninput イベントで、入力されたテキストの高さに応じて自動的に高さを調整 -->
-          <%= f.text_area :caption, class: "form-control", placeholder: "○○駅から徒歩５分ほど。#女子旅", rows: 4, oninput: "autoResize(this)" %>
+          <%= f.text_area :caption, class: "form-control", placeholder: "○○駅から徒歩５分ほど。\n露天風呂付きの部屋で快適でした！\n\n#女子旅 #温泉", rows: 4, oninput: "autoResize(this)" %>
           
           <!-- autoResize 関数 -->
           <script>
