@@ -16,7 +16,7 @@
     </td>
     <td>
       <% if post_comment.end_user == current_end_user %>
-        <%= link_to post_post_comment_path(post, post_comment), method: :delete do %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true do %>
           <%= image_tag '1061.jpg', size: '23x23' %>
         <% end %>
       <% end %>

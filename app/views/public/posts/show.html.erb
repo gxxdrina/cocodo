@@ -37,8 +37,10 @@
     
     <div class="col-md-3 shadow-sm p-3 bg-white rounded border border-2">
       <!-- コメント一覧 -->
-      <%= render "public/post_comments/index", post: @post, end_user: @end_user %>
-
+      <div class="post_comments">
+        <%= render "public/post_comments/index", post: @post, end_user: @end_user %>
+      </div>
+      
       <!-- コメント投稿 -->
       <div class="mt-2">
       <%= form_with model: [@post, @post_comment], local: false do |f| %>

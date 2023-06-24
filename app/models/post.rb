@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many_attached :post_images
 
   validates :place_name, presence:true, length:{ maximum: 20 }
-  validates :caption, presence:true
+  validates :caption, presence:true, length: { minimum: 10 }
   validates :post_images, presence:true
 
 
