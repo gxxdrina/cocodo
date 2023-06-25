@@ -2,7 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE194;">
     <div class="container">
       <div class="row">
-        <a class="navbar-brand" href="/"><%= image_tag 'cocodo.png', size: '75x50' %></a>
+        <a class="navbar-brand" href="/">
+          <%= image_tag 'cocodo.png', alt: "ココドウの小さいロゴ、クリックするとトップページに遷移する", size: '75x50' %>
+        </a>
 
         <% if end_user_signed_in? %>
           <a class="navbar-brand text-dark mt-2" href="/"><span>ようこそ <%= current_end_user.name %>さん！</span></a>

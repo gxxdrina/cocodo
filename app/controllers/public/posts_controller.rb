@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     else
       name = params[:name]
-      name = name.downcase
+      name = name.downcase  #小文字に変換
       @hashtag = Hashtag.find_by(hashname: name)
       @posts = @hashtag.posts
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
@@ -63,6 +63,6 @@ class Public::PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:end_user_id, :place_name, :caption, :hashbody, hashtag_ids: [], post_images: [])
+    params.require(:post).permit(:end_user_id, :title, :caption, :hashbody, hashtag_ids: [], post_images: [])
   end
 end

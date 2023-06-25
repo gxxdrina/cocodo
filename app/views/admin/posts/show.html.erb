@@ -9,18 +9,17 @@
       <h3><%= @post.end_user.name %>さんの投稿</h3>
       <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
         <% @post.post_images.each do |image| %>
-          <%= image_tag image.variant(resize: '200x200'), class: "rounded mt-2" %>
+          <%= image_tag image.variant(resize: '200x200'), alt: "投稿写真", class: "rounded mt-2" %>
         <% end %><br>
         
         投稿日：<%= @post.created_at.strftime("%Y/%m/%d") %>
         
         <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= @post.favorites.count %>
 
-        <p>場所：<%= @post.place_name %></p> 
+        <p>「<%= @post.title %>」</p> 
 
         <p><%= @post.caption %></p>
         
-        <!-- %= link_to "非表示", admin_top_path, class: "btn btn-outline-secondary" %>-->
         <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
       </div>
     </div>

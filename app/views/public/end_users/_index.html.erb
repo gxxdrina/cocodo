@@ -4,9 +4,9 @@
       <tr>
         <td>
           <% if end_user.profile_image %> 
-            <%= image_tag end_user.get_profile_image, alt="プロフィール画像", class: "rounded-circle my-2" , size: '50x50' %>
+            <%= image_tag end_user.get_profile_image, alt: "プロフィール画像", class: "rounded-circle my-2" , size: '50x50' %>
           <% else %>
-            <%= image_tag "default-image.jpg", alt="プロフィールのデフォルト画像", class: "rounded-circle", size: "50x50" %>
+            <%= image_tag "default-image.jpg", alt: "プロフィールのデフォルト画像", class: "rounded-circle", size: "50x50" %>
           <% end %>
         <td class="align-middle"><%= end_user.name %></td>
         <td class="align-middle text-center">

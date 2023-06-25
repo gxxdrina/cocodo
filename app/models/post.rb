@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :hashtags, through: :hashtag_post_relations
   has_many_attached :post_images
 
-  validates :place_name, presence:true, length:{ maximum: 20 }
+  validates :title, presence:true, length:{ maximum: 20 }
   validates :caption, presence:true, length: { minimum: 10 }
   validates :post_images, presence:true
 
@@ -47,7 +47,7 @@ class Post < ApplicationRecord
   ## 投稿・ハッシュタグのキーワード検索
   def self.search(keyword)
     if keyword.present?
-      where(['place_name LIKE ?', "%#{keyword}%"]).where(['hashname LIKE ?', "%#{keyword}%"])
+      where(['title LIKE ?', "%#{keyword}%"]).where(['hashname LIKE ?', "%#{keyword}%"])
     else
       none  #キーワードがない場合はフラッシュメッセージを表示して結果を返さない
     end

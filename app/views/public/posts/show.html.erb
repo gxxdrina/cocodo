@@ -8,7 +8,7 @@
       <div class="shadow-sm p-3 mb-5 bg-white rounded border border-2">
         <div class="text-center">
           <% @post.post_images.each do |image| %>
-            <%= image_tag image.variant(resize: '240x240'), alt="投稿写真", class: "rounded mt-2" %>
+            <%= image_tag image.variant(resize: '240x240'), alt: "投稿写真", class: "rounded mt-2" %>
           <% end %>
         </div>
         <!-- いいねボタン -->
@@ -16,9 +16,9 @@
           <%= render 'public/favorites/favorite-btn', post: @post %>
         </div>
         
-        <!-- 投稿日・場所（投稿タイトル）-->
+        <!-- 投稿日・タイトル -->
         <%= @post.created_at.strftime("%Y/%m/%d") %>
-        「<%= @post.place_name %>」
+        「<%= @post.title %>」
         
         <p>
           <!-- safe_joinメソッドで改行・空白を適用し、render_with_hashtagsメソッドでハッシュタグをリンクに変換 -->

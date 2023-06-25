@@ -4,8 +4,8 @@
       <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 text-center">
         <%= link_to post_path(posts), class: "text-dark" do %> 
           <!-- 投稿写真の１枚目のみを表示 -->
-          <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt="投稿写真の一枚目", class: "rounded" %><br>
-          <%= truncate(posts.place_name, length: 10, omission: '...') %><br>
+          <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %><br>
+          <%= truncate(posts.title, length: 10, omission: '...') %><br>
           
           <!-- ハッシュタグ -->
           <% posts.hashtags.each do |hashtag| %>
@@ -15,10 +15,10 @@
           <!-- いいねボタン -->
           <div class="favorite-btn">
             <% if posts.favorited_by?(current_end_user) %>
-              <%= image_tag '709(1).jpg', alt="いいね済みボタン", size: '23x23' %>
+              <%= image_tag '709(1).jpg', alt: "いいね済みボタン", size: '23x23' %>
               <%= posts.favorites.count %>
             <% else %>
-              <%= image_tag '710(1).jpg', alt="いいねボタン", size: '23x23' %>
+              <%= image_tag '710(1).jpg', alt: "いいねボタン", size: '23x23' %>
               <%= posts.favorites.count %>
             <% end %>
           </div>

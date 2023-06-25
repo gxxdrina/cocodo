@@ -23,8 +23,8 @@
           <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
         </div>
         <div class="mb-2">  
-          <b><%= f.label :タイトル（投稿写真の場所など） %></b>
-          <%= f.text_field :place_name, class: "form-control", placeholder: "箱根のおすすめ旅館" %>
+          <b><%= f.label :タイトル %></b>
+          <%= f.text_field :title, class: "form-control", placeholder: "箱根のおすすめ旅館" %>
         </div>
         <div class="mb-2">  
           <b><%= f.label :投稿内容 %></b>
