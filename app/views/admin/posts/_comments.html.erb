@@ -3,24 +3,18 @@
   <% post.post_comments.each do |post_comment| %>
   <tr class="border-top">
     <td>
-      <%= link_to end_user_path(post_comment.end_user) do %>
+      <%= link_to admin_end_user_path(post_comment.end_user) do %>
         <% if post_comment.end_user.profile_image %> 
           <%= image_tag post_comment.end_user.get_profile_image, alt: "プロフィール画像", class: "rounded-circle my-2" , size: '50x50' %>
         <% else %>
           <%= image_tag "default-image.jpg", alt: "プロフィールのデフォルト画像", class: "rounded-circle", size: "50x50" %>
         <% end %>
-      <% end %>
+      <% end %><br>
+      
     </td>
     <td>
       <%= post_comment.end_user.name %>さん<br>
       <%= post_comment.comment %>
-    </td>
-    <td>
-      <% if post_comment.end_user == current_end_user %>
-        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true do %>
-          <%= image_tag '1061.jpg', alt: "コメント削除ボタン", size: '23x23' %>
-        <% end %>
-      <% end %>
     </td>
   </tr>
   <% end %>

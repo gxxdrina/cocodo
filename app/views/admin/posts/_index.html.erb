@@ -2,15 +2,17 @@
   <div class="row">
     <% posts.each do |posts| %>
       <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap justify-content-center">
-        <%= link_to admin_post_path(posts) do %>
+        <%= link_to admin_post_path(posts), class: "text-dark" do %>
           <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %>
           
-          <p>投稿者 <%= posts.end_user.name %></p>
+          <p class="m-0">投稿者 <%= posts.end_user.name %></p>
           
           「<%= truncate(posts.title, length: 10, omission: '...') %>」<br>
-
-          コメント数:<%= posts.post_comments.count %>
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= posts.favorites.count %>
+          
+          <div class="favorite-btn">
+            <%= image_tag 'ic023.jpg', alt: "コメント数", size: '23x23' %><%= posts.post_comments.count %>件
+            <%= image_tag '709(1).jpg', alt: "いいね数", size: '23x23', class: "ml-2" %><%= posts.favorites.count %>
+          </div>
         <% end %>
       </div>
     <% end %>

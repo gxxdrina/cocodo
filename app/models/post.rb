@@ -44,10 +44,11 @@ class Post < ApplicationRecord
     end
   end
 
-  ## 投稿・ハッシュタグのキーワード検索
+  ## タイトル・ハッシュタグのキーワード検索
   def self.search(keyword)
     if keyword.present?
-      where(['title LIKE ?', "%#{keyword}%"]).where(['hashname LIKE ?', "%#{keyword}%"])
+      # タイトルかハッシュタグのどちらかにキーワードがヒット
+      where('title LIKE ? OR hashname LIKE ?', "%#{keyword}%", "%#{keyword}%")
     else
       none  #キーワードがない場合はフラッシュメッセージを表示して結果を返さない
     end

@@ -11,6 +11,10 @@
       
       <%= render 'public/posts/index', posts: @posts %>
       <%= render 'public/end_users/index', end_users: @end_users %>
+      
+      <%= paginate @posts %>
+      <%= paginate @end_users %>
+
     </div>
   </div>
 </div>
