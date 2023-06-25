@@ -69,7 +69,11 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :update]
     
     ## posts
-    resources :posts, only: [:show, :destroy] 
+    resources :posts, only: [:show, :destroy] do
+      
+      ## post_comments
+      resources :post_comments, only: [:destroy]
+    end
     
     ## searches
     get "search" => "searches#search"

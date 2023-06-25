@@ -17,8 +17,8 @@
         <div class="favorite-btn">
           <%= image_tag '709(1).jpg', alt: "いいね数", size: '23x23' %><%= @post.favorites.count %>
         </div>
+        <!-- 投稿日・タイトル -->
         <p class="m-0">
-          <!-- 投稿日・タイトル -->
           <%= @post.created_at.strftime("%Y/%m/%d") %>
           「<%= @post.title %>」
         </p>
@@ -26,6 +26,7 @@
           <!-- safe_joinメソッドで改行・空白を適用 -->
           <%= safe_join(@post.caption.split("\n").map { |line| tag.br + line }) %>
         </p>
+        
         <div class="right-button">
           <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
         </div>
@@ -34,7 +35,7 @@
     
     <div class="col-md-3 shadow-sm p-3 bg-white rounded border border-2">
       <p>コメント <%= @post.post_comments.count %>件</p>
-      <%= render "admin/posts/comments", post: @post, end_user: @end_user %>
+      <%= render "admin/post_comments/index", post: @post, end_user: @end_user %>
     </div>
 
   </div>

@@ -3,11 +3,10 @@
     <% posts.each do |posts| %>
       <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 d-flex flex-wrap justify-content-center">
         <%= link_to admin_post_path(posts), class: "text-dark" do %>
-          <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %>
-          
-          <p class="m-0">投稿者 <%= posts.end_user.name %></p>
+          <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %><br>
           
           「<%= truncate(posts.title, length: 10, omission: '...') %>」<br>
+          <p class="m-0">投稿者 <%= posts.end_user.name %></p>
           
           <div class="favorite-btn">
             <%= image_tag 'ic023.jpg', alt: "コメント数", size: '23x23' %><%= posts.post_comments.count %>件

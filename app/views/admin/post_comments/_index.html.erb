@@ -16,6 +16,11 @@
       <%= post_comment.end_user.name %>さん<br>
       <%= post_comment.comment %>
     </td>
+    <td>
+      <%= link_to admin_post_post_comment_path(post, post_comment), method: :delete, data: { confirm: "このコメントを本当に削除してよろしいですか？" } do %>
+        <%= image_tag '1061.jpg', alt: "コメント削除ボタン", size: '23x23' %>
+      <% end %>
+    </td>
   </tr>
   <% end %>
   </tbody>
