@@ -9,7 +9,7 @@
     </div>
     
     <div class="col-md-4 col-12 mb-3">
-      <a href="/about"><%= image_tag 'cocodo_top.png', size: '270x170' %></a>
+      <a href="/about"><%= image_tag 'cocodo_top.png', alt="ココドウのロゴ、クリックするとアバウトページへ遷移する", size: '270x170' %></a>
     </div>
     
     <div class="col-md-4 col-12">
@@ -34,11 +34,11 @@
         <% @posts.each do |posts| %>
           <div class="shadow-sm p-3 m-1 bg-white rounded border border-1">
           <%= link_to post_path(posts), class: "text-dark" do %>
-            <%= image_tag posts.post_images[0].variant(resize: '230x230'), class: "rounded" %><br>
+            <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt="最近人気のある投稿", class: "rounded" %><br>
             <%= truncate(posts.place_name, length: 10, omission: '...') %>
             
             <div class="favorite-btn">
-              <%= image_tag '709(1).jpg', size: '23x23' %><%= posts.favorites.count %> 
+              <%= image_tag '709(1).jpg', alt="いいね数", size: '23x23' %><%= posts.favorites.count %> 
             </div>
           <% end %>
           </div>

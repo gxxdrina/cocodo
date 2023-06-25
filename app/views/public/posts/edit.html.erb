@@ -6,7 +6,7 @@
         <h3>投稿の編集</h3>
         <%= form_with model: @post, local:true do |f| %>
           <% @post.post_images.each do |image| %>
-            <%= image_tag image.variant(resize: '240x240'), class: "rounded mt-2" %>
+            <%= image_tag image.variant(resize: '240x240'), alt="現在の投稿写真", class: "rounded mt-2" %>
           <% end %>
       </div>
       

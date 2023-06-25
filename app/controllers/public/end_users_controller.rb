@@ -18,7 +18,7 @@ class Public::EndUsersController < ApplicationController
                      .page(params[:page]).per(6)
   end
   
-  ## １投稿者の投稿一覧
+  ## 一投稿者の投稿一覧
   def show
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(6)
@@ -35,6 +35,7 @@ class Public::EndUsersController < ApplicationController
       if @end_user.update(end_user_params)
         redirect_to end_user_path(@end_user), notice: "ユーザー情報を更新しました！"
       else
+      # 入力に不備がある場合
         render :edit
       end
     else
@@ -44,12 +45,14 @@ class Public::EndUsersController < ApplicationController
     end
   end
   
+  ## 退会確認画面
   def confirm
   end
   
+  ## 退会
   def resign
     @end_user = current_end_user
-    @end_user.update(user_status: true)
+    @end_user.update(user_status: true) #true=退会
     reset_session
     flash[:notice] = "ご利用ありがとうございました。"
     redirect_to root_path
