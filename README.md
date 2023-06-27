@@ -1,11 +1,13 @@
 # ココドウ (cocodo?)
-<img width="200" alt="cocodo" src="https://github.com/gxxdrina/cocodo/assets/127483650/1add9480-3105-499e-a441-eb0cc878d2f7">
+<p align="center">
+  <img width="300" align="center" alt="cocodo" src="https://github.com/gxxdrina/cocodo/assets/127483650/1add9480-3105-499e-a441-eb0cc878d2f7">
+</p>
 
 ## サイト概要
 
 ### サイトテーマ
 「ここどう？」という観点で、  
-旅行の写真を共有できる**旅行専用のSNSサイト**です。
+旅行の写真を共有できる**旅行専用のSNSサイト**
 
 
 ### テーマを選んだ理由
