@@ -1,4 +1,4 @@
-# ココドウ (cocodo?)
+<h1 align="center">ココドウ (cocodo?)</h1>
 <p align="center">
   <img width="300" align="center" alt="cocodo" src="https://github.com/gxxdrina/cocodo/assets/127483650/1add9480-3105-499e-a441-eb0cc878d2f7">
 </p>
