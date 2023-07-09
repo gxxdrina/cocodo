@@ -4,7 +4,7 @@
       <div class="shadow-sm p-3 m-1 bg-white rounded border border-2 text-center">
         <%= link_to post_path(posts), class: "text-dark" do %> 
           <!-- 投稿写真の１枚目のみを表示 -->
-          <%= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %><br>
+          <%= image_tag posts.post_images[0], alt: "投稿写真の１枚目", class: "rounded square-image" %><br>
           <%= truncate(posts.title, length: 10, omission: '...') %><br>
           
           <!-- ハッシュタグ -->
