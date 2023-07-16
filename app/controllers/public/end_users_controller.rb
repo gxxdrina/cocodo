@@ -29,29 +29,20 @@ class Public::EndUsersController < ApplicationController
   end
     
   def update
-    # if current_end_user != EndUser.guest
-    #   # ゲストではないユーザー
-    #   @end_user = current_end_user
-    #   if @end_user.update(end_user_params)
-    #     redirect_to end_user_path(@end_user), notice: "ユーザー情報を更新しました！"
-    #   else
-    #   # 入力に不備がある場合
-    #     render :edit
-    #   end
-    # else
-    #   # ゲストユーザー
-    #   flash[:alert] = "ゲストユーザーは編集できません！"
-    #   redirect_to end_users_path
-    # end
-    
-    @end_user = current_end_user
+    if current_end_user != EndUser.guest
+      # ゲストではないユーザー
+      @end_user = current_end_user
       if @end_user.update(end_user_params)
         redirect_to end_user_path(@end_user), notice: "ユーザー情報を更新しました！"
       else
       # 入力に不備がある場合
         render :edit
       end
-    
+    else
+      # ゲストユーザー
+      flash[:alert] = "ゲストユーザーは編集できません！"
+      redirect_to end_users_path
+    end
   end
   
   ## 退会確認画面
