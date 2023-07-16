@@ -5,6 +5,8 @@
         <%= link_to post_path(posts), class: "text-dark" do %> 
           <!-- 投稿写真の１枚目のみを表示 -->
           <%= image_tag posts.post_images[0], alt: "投稿写真の１枚目", class: "rounded square-image" %><br>
+    <!--   %= image_tag posts.post_images[0].variant(resize: '230x230'), alt: "投稿写真の１枚目", class: "rounded" %>-->
+    
           <%= truncate(posts.title, length: 10, omission: '...') %><br>
           
           <!-- ハッシュタグ -->
