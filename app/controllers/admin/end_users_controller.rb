@@ -3,7 +3,7 @@ class Admin::EndUsersController < ApplicationController
   
   # 会員一覧
   def index
-    @end_users = EndUser.all.page(params[:page]).per(10)
+    @end_users = EndUser.order(created_at: :desc).page(params[:page]).per(10)
     @posts = Post.all
   end
 

@@ -20,7 +20,7 @@
       <%= form_with model: @post, url: posts_path do |f| %>
         <div class="mb-4">
           <b><%= f.label :投稿写真 %></b><br>
-          <%= f.file_field :post_images, direct_upload: true, multiple: true %><br>
+          <%= f.file_field :post_images, accept: "image/*", direct_upload: true, multiple: true %><br>
         </div>
         <div class="mb-2">  
           <b><%= f.label :タイトル %></b>

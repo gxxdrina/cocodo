@@ -14,6 +14,11 @@
   object-fit: cover;
 }
 
+.info-table td {
+  width: 100px;
+  word-wrap: break-word; /*テキストがテーブルの幅を超えた場合は改行*/
+}
+
 .favorite-btn {
   display: flex;
   justify-content: flex-end;
