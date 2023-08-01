@@ -53,11 +53,12 @@ class Public::EndUsersController < ApplicationController
   def resign
     @end_user = current_end_user
     @end_user.update(user_status: true) #true=退会
+    
     reset_session
     flash[:notice] = "ご利用ありがとうございました。"
     redirect_to root_path
   end
-  
+
   private
   def end_user_params
     params.require(:end_user).permit(:name, :introduction, :profile_image)

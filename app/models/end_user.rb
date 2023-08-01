@@ -33,9 +33,20 @@ class EndUser < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |end_user|
       end_user.name = 'ゲスト'
       end_user.introduction = 'ここどう？'
+      # end_user.password = Devise.friendly_token[0, 20] # ダミーパスワードを設定
       end_user.password = SecureRandom.urlsafe_base64  #パスワードはランダムな文字列
     end
   end
+  
+  # ## ステータスが退会のユーザーはログイン不可
+  # def active_for_authentication?
+  #   super || !user_status? #ユーザーがログインするためには、user_status?がfalse（有効）であることも必要
+  # end
+  
+  # ## 退会後のエラーメッセージの制御
+  # def inactive_message
+  #   user_status? ? super : :account_inactive #user_status?がtrueの時はdevise
+  # end
 
   ## 会員のキーワード検索
   def self.search(keyword)

@@ -35,7 +35,10 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
+      
   devise:
+    failure:
+      user_status: ロックされているためログインできません。
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:
@@ -139,6 +142,7 @@ ja:
       send_instructions: アカウントのロック解除方法を数分以内にメールでご連絡します。
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
+      
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。
