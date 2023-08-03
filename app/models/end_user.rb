@@ -38,16 +38,6 @@ class EndUser < ApplicationRecord
     end
   end
   
-  # ## ステータスが退会のユーザーはログイン不可
-  # def active_for_authentication?
-  #   super || !user_status? #ユーザーがログインするためには、user_status?がfalse（有効）であることも必要
-  # end
-  
-  # ## 退会後のエラーメッセージの制御
-  # def inactive_message
-  #   user_status? ? super : :account_inactive #user_status?がtrueの時はdevise
-  # end
-
   ## 会員のキーワード検索
   def self.search(keyword)
     if keyword.present?
