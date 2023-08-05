@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-// 追加
+// script.js 追加
 import "script.js"
 // Swiper追記
 import Swiper from 'swiper/swiper-bundle.js';
