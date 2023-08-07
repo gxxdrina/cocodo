@@ -16,6 +16,6 @@ class Public::FavoritesController < ApplicationController
   def index
     # 最近いいねした投稿が一番上にくるように並び替えして表示
     @favorite_posts = Kaminari.paginate_array(current_end_user.favorites.includes(:post)
-                      .order(created_at: :desc)).page(params[:page]).per(6)
+                      .order(created_at: :desc)).page(params[:page]).per(9)
   end
 end
