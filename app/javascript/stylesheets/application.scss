@@ -33,6 +33,18 @@
   justify-content: center;
 }
 
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.arrow {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+}
+
 // 背景画像を表示できるようにする
 //body {
 //  background-image: url("../images/hoge.jpg");
