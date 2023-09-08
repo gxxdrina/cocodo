@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'chats/show'
+    get 'chats/create'
+  end
   ## ゲスト（閲覧用）
   devise_scope :end_user do
     post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in', as: 'guest_sign_in'
