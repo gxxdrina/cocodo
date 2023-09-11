@@ -6,13 +6,13 @@ class Public::ChatsController < ApplicationController
     rooms = current_end_user.end_user_rooms.pluck(:room_id)
     end_user_rooms = EndUserRoom.find_by(end_user_id: @end_user.id, room_id: rooms)
     
-    unless end_user_rooms.nill?
+    unless end_user_rooms.nil?
       @room = end_user_rooms.room
     else
       @room = Room.new
       @room.save
-      UserRoom.create(end_user_id: current_end_user.id, room_id: @room.id)
-      UserRoom.create(user_id: @end_user.id, room_id: @room.id)
+      EndUserRoom.create(end_user_id: current_end_user.id, room_id: @room.id)
+      EndUserRoom.create(end_user_id: @end_user.id, room_id: @room.id)
     end
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
