@@ -19,6 +19,9 @@ class EndUser < ApplicationRecord
   # 自分をフォローしているUserを取得するためのアソシエーション
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :end_user_rooms
+  has_many :chats
+  has_many :rooms, through: :end_user_rooms
 
   validates :name, length: { minimum: 1, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 100 }
@@ -33,7 +36,6 @@ class EndUser < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |end_user|
       end_user.name = 'ゲスト'
       end_user.introduction = 'ここどう？'
-      # end_user.password = Devise.friendly_token[0, 20] # ダミーパスワードを設定
       end_user.password = SecureRandom.urlsafe_base64  #パスワードはランダムな文字列
     end
   end

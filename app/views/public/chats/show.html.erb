@@ -1,0 +1,28 @@
+<h3 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %>さんとのチャット</h3>
+
+<div class="message" style="width: 400px;">
+  <% @chats.each do |chat| %>
+    <% if chat.end_user_id == current_end_user.id %>
+      <p style="text-align: right;"><%= chat.message %></p>
+    <% else %>
+      <!-- チャット相手のプロフィール画像 -->
+      <div class="flex">
+        <% if @end_user.profile_image %> 
+          <%= image_tag @end_user.get_profile_image, alt: "プロフィール画像", class: "rounded-circle" , size: '50x50' %>
+        <% else %>
+          <%= image_tag "default-image.jpg", alt: "プロフィールのデフォルト画像", class: "rounded-circle", size: "50x50" %>
+        <% end %>
+        <span style="text-align: left;"><%= chat.message %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <%= render "layouts/errors", obj: @chat %>
+</div>
+
+<%= form_with model: @chat, data: {remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+<% end %>
